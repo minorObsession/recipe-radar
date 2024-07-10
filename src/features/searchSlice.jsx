@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { API_KEY, BASE_URL } from "../helpers/config";
 
 const initialState = {
-  accounts: JSON.parse(localStorage.getItem("accountsArray")),
+  accounts: JSON.parse(localStorage.getItem("accountsArray")) || [],
   currentAccount: null,
   query: "",
   searchResults: null,
@@ -12,8 +12,8 @@ const initialState = {
   activePage: 1,
   totalNumPages: null,
   resultsPerPage: 8,
-  savedRecipes: JSON.parse(localStorage.getItem("savedRecipes")),
-  weeklyRecipes: JSON.parse(localStorage.getItem("savedWeeklyRecipes")),
+  savedRecipes: JSON.parse(localStorage.getItem("savedRecipes")) || [],
+  weeklyRecipes: JSON.parse(localStorage.getItem("savedWeeklyRecipes")) || [],
 };
 export function search(query, abortController) {
   if (!query) return;
@@ -150,7 +150,6 @@ const searchSlice = createSlice({
     },
 
     createAccount(state, action) {
-      console.log("dispatched");
       state.accounts.push(action.payload);
       state.currentAccount = action.payload;
     },
