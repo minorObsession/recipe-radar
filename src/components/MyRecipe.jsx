@@ -39,8 +39,8 @@ function MyRecipe({ recipe }) {
         src={recipe.imageUrl}
         className=" w-[300px] h-[200px] lg:w-[500px] lg:h-[300px] object-cover text-center p-2 lg:p-5 opacity-65 rounded-3xl "
       ></img>
-      <div className="absolute top-12 lg:top-14 right-8 lg:right-12 flex items-center gap-3 bg-stone-500 rounded-lg p-1.5 transition-all duration-700">
-        <span className="text-sm italic">Add to Meals</span>
+      <div className="absolute top-12 lg:top-16 right-8 lg:right-12 flex items-center gap-3 bg-stone-500 rounded-lg p-1.5 transition-all duration-700">
+        <span className="text-sm italic whitespace-nowrap">Add to Meals</span>
 
         <select
           className={` bg-amber-900 italic  max-w-[8rem] text-sm p-1 rounded-full transition-all duration-700 `}
@@ -75,7 +75,7 @@ function MyRecipe({ recipe }) {
           {isLoading ? <SmallSpinner /> : "+"}
         </Button>
       </div>
-      <div className="absolute bottom-4 lg:bottom-10 right-8 lg:right-12 flex items-center gap-3 bg-stone-500 rounded-lg p-1.5 transition-all duration-700">
+      <div className="absolute bottom-4 lg:bottom-8 right-8 lg:right-12 flex items-center gap-3 bg-stone-500 rounded-lg p-1.5 transition-all duration-700">
         <span className="text-sm italic">Remove from my recipes </span>
         <Button
           onClick={handleDeleteRecipe}

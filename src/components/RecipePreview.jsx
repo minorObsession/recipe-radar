@@ -3,12 +3,13 @@ import { memo, useEffect, useState } from "react";
 
 import Button from "./Button";
 import Ingredients from "./Ingredients";
-import { saveRecipe, deleteRecipe } from "../features/searchSlice";
+import { saveRecipe, deleteRecipe, fetchRecipe } from "../features/searchSlice";
 import SmallSpinner from "./SmallSpinner";
+import { useParams } from "react-router-dom";
 
 const RecipePreview = memo(function RecipePreview() {
   const { selectedRecipe, savedRecipes } = useSelector((store) => store.search);
-
+  const { id } = useParams();
   const dispatch = useDispatch();
 
   const isInMyRecipes = savedRecipes
@@ -16,6 +17,14 @@ const RecipePreview = memo(function RecipePreview() {
     .includes(selectedRecipe?.id);
 
   const [isLoading, setIsLoading] = useState(false);
+
+  // ! to fetch recipe based on url on mount
+  useEffect(() => {
+    if (!id) return;
+    const abortController = new AbortController();
+    dispatch(fetchRecipe(id, abortController));
+    return () => abortController.abort();
+  }, [id, dispatch]);
 
   function handleAddRecipe() {
     setIsLoading(true);
@@ -46,7 +55,7 @@ const RecipePreview = memo(function RecipePreview() {
           ></img>
           <div className="absolute right-0 bottom-0 lg:bottom-2 flex items-center gap-2 justify-end m-2 bg-stone-500 rounded-lg p-2 ">
             <span className="text-sm lg:text-base italic">
-              {isInMyRecipes ? "Recipe saved" : "Add to my recipes"}
+              {isInMyRecipes ? "Recipe saved \u2713" : "Add to my recipes"}
             </span>
             <Button
               onClick={isInMyRecipes ? handleDeleteRecipe : handleAddRecipe}

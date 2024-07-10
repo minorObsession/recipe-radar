@@ -1,8 +1,8 @@
 export const titleClassNames =
-  "text-m lg:text-xl justify-self-end mr-10 lg:mr-20 ";
+  "text-xs md:text-sm lg:text-base justify-self-end mr-10 lg:mr-20 ";
 
 export const inputClassNames =
-  "bg-stone-500 py-2 px-3 placeholder-current placeholder:opacity-70 rounded-lg w-3/4 focus:outline-none focus:ring focus:ring-amber-400 focus:ring-offset-1";
+  "text-sm md:text-sm lg:text-base bg-stone-500 py-2 px-3 placeholder-current placeholder:opacity-70 rounded-lg w-full md:w-full focus:outline-none focus:ring focus:ring-amber-400 focus:ring-offset-1 ";
 
 export const inlineInputClassNames =
   "bg-stone-500 py-2 px-3 placeholder-current placeholder:opacity-70 rounded-lg w-16 focus:outline-none focus:ring focus:ring-amber-400 focus:ring-offset-1 m-2";

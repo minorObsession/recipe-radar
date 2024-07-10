@@ -26,7 +26,7 @@ function MealPlanning() {
     <>
       <div className={`${bigBox} `}>
         <div className={`${bigBoxTitle} p-4`}>My weekly meal plan</div>
-        <div className="w-full h-full grid grid-cols-2 lg:grid-cols-3 gap-5 px-6 ">
+        <div className="w-full h-full grid sm:grid-cols-2 lg:grid-cols-3 gap-5 px-6 ">
           {weekdays.map((_, i) => (
             <MyMeal key={i} recipes={weeklyRecipes} i={i} />
           ))}

@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { API_KEY, BASE_URL } from "../helpers/config";
-import { useState } from "react";
 
 const initialState = {
+  accounts: JSON.parse(localStorage.getItem("accountsArray")),
+  currentAccount: null,
   query: "",
   searchResults: null,
   selectedRecipeID: null,
@@ -14,10 +15,6 @@ const initialState = {
   savedRecipes: JSON.parse(localStorage.getItem("savedRecipes")),
   weeklyRecipes: JSON.parse(localStorage.getItem("savedWeeklyRecipes")),
 };
-
-// ! syncing savedRecipes with localStorage
-// const [storedRecipes, setStoredRecipes] = useState();
-
 export function search(query, abortController) {
   if (!query) return;
   return async function fetchSearchResults(dispatch) {
@@ -151,6 +148,16 @@ const searchSlice = createSlice({
         state.weeklyRecipes = [...state.weeklyRecipes, newMeal];
       },
     },
+
+    createAccount(state, action) {
+      console.log("dispatched");
+      state.accounts.push(action.payload);
+      state.currentAccount = action.payload;
+    },
+
+    login(state, action) {
+      state.currentAccount = action.payload;
+    },
   },
 });
 
@@ -170,6 +177,9 @@ export const {
   deleteRecipe,
   weeklyRecipes,
   addMeal,
+  createAccount,
+  accounts,
+  login,
 } = searchSlice.actions;
 
 export default searchSlice.reducer;

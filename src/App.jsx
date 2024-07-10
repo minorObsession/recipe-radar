@@ -11,6 +11,8 @@ import AppLayout from "./pages/AppLayout";
 import Search from "./pages/Search";
 import RecipePreview from "./components/RecipePreview";
 import AddToMealsForm from "./components/AddToMealsForm";
+import { useRef } from "react";
+import { useKeyPress } from "./helpers/useKeyPress";
 
 // ! IDEAS:
 
@@ -114,9 +116,7 @@ function App() {
           <Route path="search" element={<Search />}>
             <Route path=":id" element={<RecipePreview />}></Route>
           </Route>
-          <Route path="my-recipes" element={<MyRecipes />}>
-            <Route path="form" element={<AddToMealsForm />}></Route>
-          </Route>
+          <Route path="my-recipes" element={<MyRecipes />}></Route>
           <Route path="meal-planning" element={<MealPlanning />}></Route>
         </Route>
 

@@ -9,7 +9,7 @@ const Sidebar = memo(function Sidebar() {
   const { isLoading, searchResults } = useSelector((store) => store.search);
   return (
     <div
-      className={`w-[28vw] lg:w-[20vw] bg-stone-500 pt-5  flex flex-col gap-6 items-start lg:items-center rounded-lg text-amber-500 text-xl overflow-hidden ${
+      className={`w-[30vw] sm:w-[28vw] lg:w-[20vw] bg-stone-500 pt-5 flex flex-col gap-6 items-start lg:items-center rounded-lg text-amber-500 text-xl overflow-hidden ${
         !searchResults?.length && "bg-transparent"
       } ${
         isLoading ||

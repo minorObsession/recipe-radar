@@ -12,7 +12,6 @@ function Ingredients() {
   }
 
   function decreaseServings() {
-    console.log(numServings);
     setNumServings((s) => (s > 1 ? --s : s));
   }
 

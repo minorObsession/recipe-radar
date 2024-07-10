@@ -9,17 +9,13 @@ import { Link } from "react-router-dom";
 
 const SearchResult = memo(function SearchResult({ result }) {
   const dispatch = useDispatch();
-  const { selectedRecipeID } = useSelector((store) => store.search);
 
   const handleSelect = useCallback(() => {
-    if (selectedRecipeID !== result.id) {
-      const abortController = new AbortController();
+    const abortController = new AbortController();
 
-      dispatch(selectRecipeID(result.id));
-      dispatch(fetchRecipe(result.id, abortController));
-    }
-  }, [dispatch, result.id, selectedRecipeID]);
-  console.log(result);
+    dispatch(selectRecipeID(result.id));
+    dispatch(fetchRecipe(result.id, abortController));
+  }, [dispatch, result.id]);
 
   return (
     <li>
