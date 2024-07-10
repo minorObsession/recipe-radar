@@ -14,7 +14,7 @@ function AppLayout() {
     <>
       <div className="flex justify-center lg:text-xl">
         <div
-          className={`w-[90vw] h-[90vh] lg:max-h-[85vh] bg-transparent grid grid-cols-[5fr_1fr] grid-rows-[80px_5fr] `}
+          className={`w-full sm:w-[90vw] h-[90vh] lg:max-h-[85vh] bg-transparent grid sm:grid-cols-[5fr_1fr] grid-rows-[80px_5fr] `}
         >
           <Tabs />
           {/* <Sidebar /> */}

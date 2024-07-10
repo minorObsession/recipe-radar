@@ -42,7 +42,7 @@ const Search = memo(function Search() {
 
   return (
     <div
-      className={`w-[100vw] sm:w-[90vw] lg:w-[90vw] min-h-[80vh] max-h-[80vh] grid grid-cols-[1fr_4fr] gap-x-10 transition-all ease-in-out duration-1000 `}
+      className={`w-[80vw] sm:w-[90vw] lg:w-[90vw] min-h-[80vh] max-h-[80vh] sm:grid sm:grid-cols-[1fr_4fr] gap-x-10 transition-all ease-in-out duration-1000 `}
     >
       {searchResults && <Sidebar />}
       {/* <Sidebar /> */}
