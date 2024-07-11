@@ -7,7 +7,7 @@ function Pagination() {
   const { activePage, totalNumPages } = useSelector((store) => store.search);
 
   return (
-    <div className=" p-5 -translate-y-3 w-full max-w[90%] flex gap-2 lg:gap-4 items-center justify-center text-right text-lg">
+    <div className=" sm:p-5 -translate-y-3 w-full max-w[90%] flex gap-2 lg:gap-4 items-center justify-center text-right text-lg">
       <Button type="round" onClick={() => dispatch(previousPage())}>
         &larr;
       </Button>

@@ -41,8 +41,9 @@ const Search = memo(function Search() {
   });
 
   return (
+    // ! whole grid
     <div
-      className={`w-[80vw] sm:w-[90vw] lg:w-[90vw] min-h-[80vh] max-h-[80vh] sm:grid sm:grid-cols-[1fr_4fr] gap-x-10 transition-all ease-in-out duration-1000 `}
+      className={`w-[90vw] sm:w-[90vw] lg:w-[90vw] flex flex-col gap-2 sm:grid sm:grid-cols-[1fr_4fr] gap-x-10 transition-all ease-in-out duration-1000 `}
     >
       {searchResults && <Sidebar />}
       {/* <Sidebar /> */}

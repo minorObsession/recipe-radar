@@ -11,7 +11,7 @@ const initialState = {
   isLoading: false,
   activePage: 1,
   totalNumPages: null,
-  resultsPerPage: 8,
+  resultsPerPage: 5,
   savedRecipes: JSON.parse(localStorage.getItem("savedRecipes")) || [],
   weeklyRecipes: JSON.parse(localStorage.getItem("savedWeeklyRecipes")) || [],
 };

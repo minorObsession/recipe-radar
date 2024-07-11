@@ -20,12 +20,12 @@ const SearchResult = memo(function SearchResult({ result }) {
   return (
     <li>
       <Link
-        className="grid grid-rows-1 grid-cols-[1fr_2fr] gap-3 lg:gap-5 p-3 items-center rounded-xl border-b border-amber-800 cursor-pointer hover:text-amber-300 transition-colors duration-600  "
+        className="grid grid-rows-1 grid-cols-[1fr_2fr] max-h-12 sm:max-h-20 gap sm:gap-3 lg:gap-5 p-3 items-center rounded-xl border-b border-amber-800 cursor-pointer hover:text-amber-300 transition-colors duration-600  "
         onClick={handleSelect}
         to={`${result.id}`}
       >
         <img
-          className="w-14 h-14 rounded-full opacity-70 object-cover"
+          className="w-10 h-10 sm:w-14 sm:h-14 rounded-full opacity-70 object-cover"
           src={result.image_url}
           alt={result.title}
         />

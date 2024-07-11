@@ -12,6 +12,7 @@ import Search from "./Search";
 function AppLayout() {
   return (
     <>
+      {/* // ! FLEX CONTAINING THE TABS AND WHOLE PREVIEW */}
       <div className="flex justify-center lg:text-xl">
         <div
           className={`w-full sm:w-[90vw] h-[90vh] lg:max-h-[85vh] bg-transparent grid sm:grid-cols-[5fr_1fr] grid-rows-[80px_5fr] `}
