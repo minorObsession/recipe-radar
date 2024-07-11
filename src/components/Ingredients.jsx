@@ -16,7 +16,7 @@ function Ingredients() {
   }
 
   return (
-    <div className="grid grid-cols-2 items-start gap-6 h-full rounded-lg bg-stone-500 p-3  ">
+    <div className=" w-full grid grid-cols-2 items-start gap-6 h-full rounded-lg bg-stone-500 p-3 ">
       <div className="col-[1/_span_2] flex lg:flex-grow lg:w-full items-center justify-center gap-3 bg-stone-600 w-full rounded-lg text-base p-1 lg:p-2 ">
         <span>servings:</span>
         <Button

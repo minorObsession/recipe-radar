@@ -15,6 +15,7 @@ const initialState = {
   savedRecipes: JSON.parse(localStorage.getItem("savedRecipes")) || [],
   weeklyRecipes: JSON.parse(localStorage.getItem("savedWeeklyRecipes")) || [],
 };
+
 export function search(query, abortController) {
   if (!query) return;
   return async function fetchSearchResults(dispatch) {
@@ -136,7 +137,7 @@ const searchSlice = createSlice({
       );
     },
 
-    addMeal: {
+    addRecipeToWeeklyPlan: {
       prepare(recipe, weekday) {
         return { payload: { recipe, weekday } };
       },
@@ -146,6 +147,19 @@ const searchSlice = createSlice({
           weekday: action.payload.weekday,
         };
         state.weeklyRecipes = [...state.weeklyRecipes, newMeal];
+      },
+    },
+
+    removeRecipeFromWeeklyPlan: {
+      prepare(recipe, weekday) {
+        return { payload: { recipe, weekday } };
+      },
+      reducer(state, action) {
+        console.log(action.payload.weekday);
+
+        state.weeklyRecipes = state.weeklyRecipes.filter(
+          (recipe) => recipe.weekday !== action.payload.recipe.weekday
+        );
       },
     },
 
@@ -175,7 +189,8 @@ export const {
   saveRecipe,
   deleteRecipe,
   weeklyRecipes,
-  addMeal,
+  addRecipeToWeeklyPlan,
+  removeRecipeFromWeeklyPlan,
   createAccount,
   accounts,
   login,

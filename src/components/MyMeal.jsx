@@ -2,14 +2,26 @@ import { useState } from "react";
 import Button from "./Button";
 import { weekdays } from "../helpers/config";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { removeRecipeFromWeeklyPlan } from "../features/searchSlice";
 
 function MyMeal({ recipes, i }) {
+  const { weeklyRecipes } = useSelector((store) => store.search);
+  const dispatch = useDispatch();
   const [isCollapsed, setIsCollapsed] = useState(false);
   const weekdaysPlanned = recipes.map((r) => r.weekday);
   const daysPlannedOrNot = weekdays.map((w) =>
     weekdaysPlanned.includes(w) ? true : false
   );
-  // console.log(weekdays.map((w) => w));
+
+  function handleRemoveRecipe() {
+    // console.log(weeklyRecipes);
+    const recipe = recipes.find((r) => r.weekday === weekdays[i]);
+    const recipeToDelete = weeklyRecipes.find((r) => r === recipe);
+    dispatch(removeRecipeFromWeeklyPlan(recipeToDelete));
+  }
+
   return (
     // ! EACH DAY GRID
     <div
@@ -26,7 +38,7 @@ function MyMeal({ recipes, i }) {
         </h3>
         {daysPlannedOrNot[i] && (
           <div className="flex gap-2">
-            <Button onClick={() => {}} type="round">
+            <Button onClick={handleRemoveRecipe} type="round">
               -
             </Button>
             <Button

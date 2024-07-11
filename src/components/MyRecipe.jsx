@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import Button from "./Button";
 import SmallSpinner from "./SmallSpinner";
-import { deleteRecipe, addMeal } from "../features/searchSlice";
+import { deleteRecipe, addRecipeToWeeklyPlan } from "../features/searchSlice";
 import { next7Days } from "../helpers/helperFunctions";
 
 function MyRecipe({ recipe }) {
@@ -25,7 +25,7 @@ function MyRecipe({ recipe }) {
   function handleAddToMeals() {
     setIsLoading(true);
     setTimeout(() => {
-      dispatch(addMeal(recipe, selectedWeekday));
+      dispatch(addRecipeToWeeklyPlan(recipe, selectedWeekday));
       setIsLoading(false);
     }, 1000);
   }
