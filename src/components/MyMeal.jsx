@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "./Button";
 import { weekdays } from "../helpers/config";
+import { Link } from "react-router-dom";
 
 function MyMeal({ recipes, i }) {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -8,7 +9,7 @@ function MyMeal({ recipes, i }) {
   const daysPlannedOrNot = weekdays.map((w) =>
     weekdaysPlanned.includes(w) ? true : false
   );
-
+  // console.log(weekdays.map((w) => w));
   return (
     // ! EACH DAY GRID
     <div
@@ -47,11 +48,18 @@ function MyMeal({ recipes, i }) {
       )}
       {daysPlannedOrNot[i] ? (
         <div
-          className={`flex flex-col gap-3 ${
+          className={`flex flex-col gap-3 justify-around ${
             isCollapsed && "col-span-2 self-center"
           }`}
         >
-          <h3 className="text-center ">{recipes.map((r) => r.title)}</h3>
+          <Link
+            to={`/app/search/${
+              recipes.find((r) => r.weekday === weekdays[i])?.id
+            }`}
+            className="text-center "
+          >
+            {recipes.find((r) => r.weekday === weekdays[i])?.title}
+          </Link>
           {/* // ! conditionally show div if not collapsed */}
           {!isCollapsed && (
             <div className="text-sm grid grid-cols-2 gap-1 text-center font-light">
