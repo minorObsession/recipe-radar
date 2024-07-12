@@ -18,6 +18,7 @@ const Search = memo(function Search() {
 
   const handleSearch = useCallback(
     function handleSearch() {
+      console.log("search happening");
       if (!query || query.length < 3 || query === previousQuery.current) return;
       const abortController = new AbortController();
       dispatch(search(query, abortController));
@@ -45,7 +46,7 @@ const Search = memo(function Search() {
     <div
       className={`w-[90vw] sm:w-[90vw] lg:w-[90vw] max-h-[90vh] flex flex-col gap-2 sm:grid sm:grid-cols-[1fr_4fr] gap-x-10 transition-all ease-in-out duration-1000 `}
     >
-      {searchResults && <Sidebar />}
+      <Sidebar />
       {/* <Sidebar /> */}
       <div
         className={`${

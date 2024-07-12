@@ -15,6 +15,7 @@ function Tabs() {
 
     navigate(`/app/search/${recipe.id}`);
   }
+
   return (
     <div className="col-span-2 flex justify-between gap-4 p-4 sm:p-2 mb-6  border-b-2 border-amber-300 border-dotted md:racking-wider sm:font-semibold text-sm sm:text-lg lg:text-xl md:whitespace-nowrap">
       <div className="flex gap-10">
@@ -47,19 +48,23 @@ function Tabs() {
             {currentAccount?.name}
           </SidebarButton>
           {showSavedRecipes && (
-            <div className="absolute top-7 right-0 flex flex-col z-50 bg-slate-600 p-5 rounded-xl max-w-48 transition-opacity duration-300  opacity-60 hover:opacity-100">
+            <div className="absolute top-6 right-0 md:top-7 md:right-0 flex flex-col z-50 bg-stone-600 p-5 rounded-xl transition-opacity duration-300 opacity-60 hover:opacity-100">
               <div className="flex flex-col gap-2 ">
-                <h2 className="self-center mb-4">My Recipes</h2>
-                {savedRecipes.map((r) => (
-                  <li
-                    // ! navigate to recipePreview
-                    onClick={handleSelectRecipe}
-                    className="text-sm cursor-pointer list-disc"
-                    key={r.id}
-                  >
-                    {r.title}
-                  </li>
-                ))}
+                <h2 className="self-center text-center mb-4 text-lg font-semibold tracking-wider md:text-xl bg-stone-500 px-5 py-2 rounded-lg">
+                  My Recipes
+                </h2>
+                <ul className="flex flex-col gap-3 ">
+                  {savedRecipes.map((r) => (
+                    <li
+                      // ! navigate to recipePreview
+                      onClick={handleSelectRecipe}
+                      className="text-sm cursor-pointer md:text-base "
+                      key={r.id}
+                    >
+                      {r.title}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           )}
