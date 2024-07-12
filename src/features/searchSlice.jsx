@@ -171,6 +171,11 @@ const searchSlice = createSlice({
     login(state, action) {
       state.currentAccount = action.payload;
     },
+
+    resetSearch(state, action) {
+      state.searchResults = null;
+      state.totalNumPages = null;
+    },
   },
 });
 
@@ -194,6 +199,7 @@ export const {
   createAccount,
   accounts,
   login,
+  resetSearch,
 } = searchSlice.actions;
 
 export default searchSlice.reducer;

@@ -7,6 +7,7 @@ import SearchInput from "../components/SearchInput";
 import Sidebar from "../components/Sidebar";
 import { search } from "../features/searchSlice";
 import { useKeyPress } from "../helpers/useKeyPress";
+import { findRenderedComponentWithType } from "react-dom/test-utils";
 
 //
 const Search = memo(function Search() {

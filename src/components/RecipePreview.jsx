@@ -47,9 +47,9 @@ const RecipePreview = memo(function RecipePreview() {
   return (
     <div className="lg:flex justify-center lg:justify-between lg:gap-10 mt-5 lg:mt-8 ">
       <div className="flex flex-col gap-2 lg:flex-row  items-center lg:items-start">
-        <div className="relative h-[50px] md:h-[200px] lg:h-[500px]">
+        <div className="relative h-[200px] w-[300px] md:h-[300px] md:w-[300px] lg:h-[400px] lg:w-[400px] xl:h-[500px] xl:w-[500px]">
           <img
-            className="rounded-lg opacity-80 "
+            className="rounded-lg opacity-80 h-full w-full object-cover"
             src={selectedRecipe.imageUrl}
             alt={selectedRecipe.title}
           />
