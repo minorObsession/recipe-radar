@@ -10,7 +10,7 @@ const Sidebar = memo(function Sidebar() {
 
   return (
     <div
-      className={`w-[90vw] sm:w-[30vw] lg:w-[20vw]  bg-stone-500 sm:pt-5 flex flex-col gap-6 items-start lg:items-center rounded-lg text-amber-500 text-xl overflow-hidden ${
+      className={`w-[90vw] sm:w-[30vw] lg:w-[20vw] bg-stone-500 sm:pt-5 flex flex-col gap-6 items-start lg:items-center rounded-lg text-amber-500 text-xl overflow-auto ${
         !searchResults?.length && "bg-transparent"
       } ${
         isLoading ||

@@ -48,7 +48,6 @@ const Search = memo(function Search() {
       className={`w-[90vw] sm:w-[90vw] lg:w-[90vw] max-h-[90vh] flex flex-col gap-2 sm:grid sm:grid-cols-[1fr_4fr] gap-x-10 transition-all ease-in-out duration-1000 `}
     >
       <Sidebar />
-      {/* <Sidebar /> */}
       <div
         className={`${
           !searchResults && "col-span-2"
