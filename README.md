@@ -1,8 +1,22 @@
-# React + Vite
+# Recipe Radar
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+App for searching, displaying and bookmarking recipes (fetched from an API) in order to plan their meals
 
-Currently, two official plugins are available:
+## Developed using Vite
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Hosted on Netlify
+
+https://reciperadarapp.netlify.app/
+
+## Features
+
+- Responsive app design - Tailwind media queries to work for mobile, tablet and desktop screens
+- Accounts functionality: creating accounts and logging in to save recipes
+- Recipe Viewing: Paginated results panel + Recipe photo and a table of ingredients adjustable per # of servings
+- Meal Planning: planning meals for next 7 days based on saved/bookmarked recipes
+
+## Tech Stack
+
+- Page Routing: React Router
+- State management: Redux toolkit + React
+- CSS: Tailwind CSS + Vanilla CSS

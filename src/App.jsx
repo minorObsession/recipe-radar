@@ -14,8 +14,7 @@ import AddToMealsForm from "./components/AddToMealsForm";
 import { useRef } from "react";
 import { useKeyPress } from "./helpers/useKeyPress";
 
-// ! IDEAS:
-
+// ! IDEAS - TO DO:
 // *
 
 function App() {

@@ -3,10 +3,12 @@ import SidebarButton from "./SidebarButton";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { resetSearch } from "../features/searchSlice";
+import { resetSearch, searchResults } from "../features/searchSlice";
 
 function Tabs() {
-  const { currentAccount, savedRecipes } = useSelector((store) => store.search);
+  const { currentAccount, savedRecipes, searchResults } = useSelector(
+    (store) => store.search
+  );
   const [showSavedRecipes, setShowSavedRecipes] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -21,11 +23,15 @@ function Tabs() {
   }
 
   function refreshPage() {
-    navigate(`/app/search`);
-    // dispatch(startSearching());
-
+    if (!searchResults) return;
     setTimeout(() => {
-      dispatch(resetSearch());
+      setIsLoading(true);
+      setTimeout(() => {
+        dispatch(resetSearch());
+        navigate(`/app/search`);
+        setIsLoading(false);
+      }, 1000);
+
       // dispatch(stopSearching());
     }, 500);
   }

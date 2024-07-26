@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { removeRecipeFromWeeklyPlan } from "../features/searchSlice";
+import SmallSpinner from "./SmallSpinner";
 
 function MyMeal({ recipes, i }) {
   const { weeklyRecipes } = useSelector((store) => store.search);
   const dispatch = useDispatch();
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const weekdaysPlanned = recipes.map((r) => r.weekday);
   const daysPlannedOrNot = weekdays.map((w) =>
     weekdaysPlanned.includes(w) ? true : false
@@ -19,7 +21,11 @@ function MyMeal({ recipes, i }) {
     // console.log(weeklyRecipes);
     const recipe = recipes.find((r) => r.weekday === weekdays[i]);
     const recipeToDelete = weeklyRecipes.find((r) => r === recipe);
-    dispatch(removeRecipeFromWeeklyPlan(recipeToDelete));
+    setIsLoading(true);
+    setTimeout(() => {
+      dispatch(removeRecipeFromWeeklyPlan(recipeToDelete));
+      setIsLoading(false);
+    }, 1000);
   }
 
   return (
@@ -39,7 +45,7 @@ function MyMeal({ recipes, i }) {
         {daysPlannedOrNot[i] && (
           <div className="flex gap-2">
             <Button onClick={handleRemoveRecipe} type="round">
-              -
+              {isLoading ? <SmallSpinner /> : "-"}
             </Button>
             <Button
               isCollapsed={isCollapsed}

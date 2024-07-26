@@ -87,6 +87,8 @@ const searchSlice = createSlice({
       state.totalNumPages = Math.ceil(
         action.payload.length / state.resultsPerPage
       );
+      state.selectedRecipe = null;
+      state.selectedRecipeID = null;
     },
 
     startSearching(state) {
@@ -175,6 +177,8 @@ const searchSlice = createSlice({
     resetSearch(state, action) {
       state.searchResults = null;
       state.totalNumPages = null;
+      state.selectedRecipe = null;
+      state.selectedRecipeID = null;
     },
   },
 });

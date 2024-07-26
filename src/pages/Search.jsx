@@ -1,5 +1,4 @@
 import { memo, useCallback, useRef, useState } from "react";
-import { bigBox, inputClassNames } from "../helpers/classNames";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../components/Button";
 import RecipePreview from "../components/RecipePreview";
@@ -7,7 +6,6 @@ import SearchInput from "../components/SearchInput";
 import Sidebar from "../components/Sidebar";
 import { search } from "../features/searchSlice";
 import { useKeyPress } from "../helpers/useKeyPress";
-import { findRenderedComponentWithType } from "react-dom/test-utils";
 
 //
 const Search = memo(function Search() {
@@ -20,10 +18,9 @@ const Search = memo(function Search() {
   const handleSearch = useCallback(
     function handleSearch() {
       console.log("search happening");
-      if (!query || query.length < 3 || query === previousQuery.current) return;
+      if (!query || query.length < 3) return;
       const abortController = new AbortController();
       dispatch(search(query, abortController));
-      previousQuery.current = query;
       setQuery("");
     },
     [dispatch, query]

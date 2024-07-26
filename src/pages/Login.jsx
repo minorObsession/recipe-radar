@@ -7,6 +7,7 @@ import Button from "../components/Button";
 import SmallSpinner from "../components/SmallSpinner";
 import { inputClassNames } from "../helpers/classNames";
 import { login } from "../features/searchSlice";
+import { useKeyPress } from "../helpers/useKeyPress";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -17,7 +18,7 @@ function Login() {
   const navigate = useNavigate();
 
   function handleLogin(e) {
-    e.preventDefault();
+    if (e) e.preventDefault();
 
     const account = accounts.find((acc) => acc.username === username);
     console.log(account);
@@ -25,8 +26,8 @@ function Login() {
     if (
       !username ||
       !password ||
-      username !== account.username ||
-      password !== account.password
+      username !== account?.username ||
+      password !== account?.password
     )
       return alert("Something went wrong... Please try logging in again");
 
@@ -37,6 +38,8 @@ function Login() {
       navigate("/app");
     }, 1000);
   }
+
+  useKeyPress("Enter", handleLogin);
 
   return (
     <form
@@ -55,7 +58,7 @@ function Login() {
         <label className="justify-self-end">password</label>
         <input
           className={`w-48 lg:w-72 ${inputClassNames}`}
-          type="text"
+          type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         ></input>
