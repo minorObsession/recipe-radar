@@ -68,14 +68,6 @@ function Button({
     >
       {children}
     </button>
-    // <button
-    //   className={`text-center bg-stone-600 lg:text-xl rounded-full py-3 px-4 tracking-wide hover:bg-stone-800 transition-colors duration-600 ${additionalClasses} ${focusRing}`}
-    //   onClick={onClick}
-    //   onMouseOver={onMouseOver}
-    //   onMouseLeave={onMouseLeave}
-    // >
-    //   {children}
-    // </button>
   );
 }
 

@@ -1,6 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { BASE_URL, API_KEY } from "./helpers/config";
-import Nav from "./Nav";
+
 import Homepage from "./pages/Homepage";
 import MealPlanning from "./pages/MealPlanning";
 import MyRecipes from "./pages/MyRecipes";
@@ -10,9 +9,6 @@ import Login from "./pages/Login";
 import AppLayout from "./pages/AppLayout";
 import Search from "./pages/Search";
 import RecipePreview from "./components/RecipePreview";
-import AddToMealsForm from "./components/AddToMealsForm";
-import { useRef } from "react";
-import { useKeyPress } from "./helpers/useKeyPress";
 
 // ! IDEAS - TO DO:
 // *
