@@ -8,7 +8,7 @@ https://reciperadarapp.netlify.app/
 
 ## Instructions to start application
 
-- **pull this repository** or download it and open the project folder in your terminal text editor
+- **pull this repository** or download it and open the project folder in your text editor's command line
 - type **"npm i"** in the command line to install all dependencies
 - **"npm run dev"** in the command line to run development
 - **"npm run build"** in the command line to initiate the build process
