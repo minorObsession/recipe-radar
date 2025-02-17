@@ -99,6 +99,7 @@ function App() {
   //   </div>
   // );
 
+  // ! when no children - self close with />
   return (
     <BrowserRouter>
       <Routes>
@@ -112,7 +113,7 @@ function App() {
             <Route path=":id" element={<RecipePreview />}></Route>
           </Route>
           <Route path="my-recipes" element={<MyRecipes />}></Route>
-          <Route path="meal-planning" element={<MealPlanning />}></Route>
+          <Route path="meal-planning" element={<MealPlanning />} />
         </Route>
 
         <Route path="*" element={<PageNotFound />}></Route>

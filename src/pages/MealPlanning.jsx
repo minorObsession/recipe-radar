@@ -18,9 +18,12 @@ function MealPlanning() {
     "savedWeeklyRecipes"
   );
 
+  // ! prevent infinite loop situation
+
   useEffect(() => {
     setSavedWeeklyRecipes(weeklyRecipes);
-  }, [weeklyRecipes, savedWeeklyRecipes, setSavedWeeklyRecipes]);
+    // ! THINK ABOUT THE DEPENDENCY ARRAY - remove savedWeeklyRecipes
+  }, [weeklyRecipes, setSavedWeeklyRecipes]); // savedWeeklyRecipes,
 
   return (
     <>

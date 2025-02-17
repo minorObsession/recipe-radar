@@ -1,26 +1,28 @@
 import { memo, useCallback, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Button from "../components/Button";
 import RecipePreview from "../components/RecipePreview";
 import SearchInput from "../components/SearchInput";
 import Sidebar from "../components/Sidebar";
 import { search } from "../features/searchSlice";
 import { useKeyPress } from "../helpers/useKeyPress";
+import { useInputChangeDebounce } from "../helpers/useInputChangeDebounce(useRef)";
 
 //
 const Search = memo(function Search() {
   const [query, setQuery] = useState("");
   const { searchResults } = useSelector((store) => store.search);
   const dispatch = useDispatch();
+  const searchRef = useRef();
 
-  const previousQuery = useRef(null);
+  // const previousQuery = useRef(null);
 
   const handleSearch = useCallback(
     function handleSearch() {
-      console.log("search happening");
       if (!query || query.length < 3) return;
-      const abortController = new AbortController();
-      dispatch(search(query, abortController));
+
+      // ! query changes - dispatch search
+      // const abortController = new AbortController();
+      dispatch(search(query));
       setQuery("");
     },
     [dispatch, query]
@@ -29,6 +31,7 @@ const Search = memo(function Search() {
   // ! input field focus on Enter press
   const inputEl = useRef(null);
   const btnEl = useRef(null);
+
   useKeyPress("Enter", () => {
     if (
       document.activeElement === inputEl ||
@@ -38,6 +41,15 @@ const Search = memo(function Search() {
     inputEl.current.focus();
     setQuery("");
   });
+
+  const callHandleSearch = useInputChangeDebounce(handleSearch, 500);
+  callHandleSearch();
+
+  // ! query changes - dispatch search
+  // useEffect(() => {
+  //   // ! do the search with debounce
+  //   useInputChangeDebounce(handleSearch);
+  // }, [query, handleSearch]);
 
   return (
     // ! whole grid
@@ -56,13 +68,15 @@ const Search = memo(function Search() {
             placeholder="search our amazing recipes"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            inputEl={inputEl}
+            // inputEl={inputEl}
             handleSearch={handleSearch}
+            ref={searchRef}
           />
 
-          <Button type="inline" onClick={handleSearch} btnEl={btnEl}>
+          {/* // ! disabled for live typing search */}
+          {/* <Button type="inline" onClick={handleSearch} btnEl={btnEl}>
             GO
-          </Button>
+          </Button> */}
         </div>
         <RecipePreview />
       </div>

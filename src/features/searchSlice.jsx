@@ -16,33 +16,53 @@ const initialState = {
   weeklyRecipes: JSON.parse(localStorage.getItem("savedWeeklyRecipes")) || [],
 };
 
-export function search(query, abortController) {
+export function search(query) {
   if (!query) return;
   return async function fetchSearchResults(dispatch) {
-    if (abortController.current) {
-      abortController.current.abort();
-    }
-    abortController.current = new AbortController();
     dispatch({ type: "search/startSearching" });
     try {
       const url = `${BASE_URL}?search=${query}&key=${API_KEY}`;
-      const response = await fetch(url, {
-        signal: abortController.current.signal,
-      });
+      const response = await fetch(url);
       const data = await response.json();
       dispatch({
         type: "search/saveSearchResults",
         payload: data.data.recipes,
       });
     } catch (error) {
-      if (error.name !== "AbortError") {
-        console.error(error);
-      }
+      console.error(error);
     } finally {
       dispatch({ type: "search/stopSearching" });
     }
   };
 }
+// ! changed for live typing search
+// export function search(query, abortController) {
+//   if (!query) return;
+//   return async function fetchSearchResults(dispatch) {
+//     if (abortController.current) {
+//       abortController.current.abort();
+//     }
+//     abortController.current = new AbortController();
+//     dispatch({ type: "search/startSearching" });
+//     try {
+//       const url = `${BASE_URL}?search=${query}&key=${API_KEY}`;
+//       const response = await fetch(url, {
+//         signal: abortController.current.signal,
+//       });
+//       const data = await response.json();
+//       dispatch({
+//         type: "search/saveSearchResults",
+//         payload: data.data.recipes,
+//       });
+//     } catch (error) {
+//       if (error.name !== "AbortError") {
+//         console.error(error);
+//       }
+//     } finally {
+//       dispatch({ type: "search/stopSearching" });
+//     }
+//   };
+// }
 
 export function fetchRecipe(id, abortController) {
   if (!id) return;

@@ -21,24 +21,28 @@ function MyRecipes() {
     "savedRecipes"
   );
 
+  // ! THINK ABOUT THE DEPENDENCY ARRAY - remove savedWeeklyRecipes
+
+  // ! test how the app works
   useEffect(() => {
     setStoredRecipes(savedRecipes);
-  }, [savedRecipes, storedRecipes, setStoredRecipes]);
+  }, [savedRecipes, setStoredRecipes]);
 
   return (
     <div className={`${bigBox}`}>
       <h2 className={`${bigBoxTitle}`}>
         Saved Recipes
+        {/* // ! self-close input */}
         <input
           value={savedRecipes.length}
           disabled
           className={inlineInputClassNames}
-        ></input>
+        />
       </h2>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-y-4 sm:gap-y-10 gap-x-6">
         {savedRecipes.map((recipe) => (
-          <MyRecipe recipe={recipe} key={recipe.id}></MyRecipe>
+          <MyRecipe recipe={recipe} key={recipe.id} />
         ))}
         <Outlet />
       </div>
