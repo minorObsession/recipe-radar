@@ -19,7 +19,7 @@ const initialState = {
 export function search(query) {
   if (!query) return;
   return async function fetchSearchResults(dispatch) {
-    dispatch({ type: "search/startSearching" });
+    dispatch({ type: "search/startLoading" });
     try {
       const url = `${BASE_URL}?search=${query}&key=${API_KEY}`;
       const response = await fetch(url);
@@ -31,38 +31,10 @@ export function search(query) {
     } catch (error) {
       console.error(error);
     } finally {
-      dispatch({ type: "search/stopSearching" });
+      dispatch({ type: "search/stopLoading" });
     }
   };
 }
-// ! changed for live typing search
-// export function search(query, abortController) {
-//   if (!query) return;
-//   return async function fetchSearchResults(dispatch) {
-//     if (abortController.current) {
-//       abortController.current.abort();
-//     }
-//     abortController.current = new AbortController();
-//     dispatch({ type: "search/startSearching" });
-//     try {
-//       const url = `${BASE_URL}?search=${query}&key=${API_KEY}`;
-//       const response = await fetch(url, {
-//         signal: abortController.current.signal,
-//       });
-//       const data = await response.json();
-//       dispatch({
-//         type: "search/saveSearchResults",
-//         payload: data.data.recipes,
-//       });
-//     } catch (error) {
-//       if (error.name !== "AbortError") {
-//         console.error(error);
-//       }
-//     } finally {
-//       dispatch({ type: "search/stopSearching" });
-//     }
-//   };
-// }
 
 export function fetchRecipe(id, abortController) {
   if (!id) return;
@@ -71,7 +43,7 @@ export function fetchRecipe(id, abortController) {
       abortController.current.abort();
     }
     abortController.current = new AbortController();
-    dispatch({ type: "search/startSearching" });
+    dispatch({ type: "search/startLoading" });
     try {
       const url = `${BASE_URL}${id}`;
       const response = await fetch(url, {
@@ -87,7 +59,8 @@ export function fetchRecipe(id, abortController) {
         console.error(error);
       }
     } finally {
-      dispatch({ type: "search/stopSearching" });
+      dispatch({ type: "search/stopLoading" });
+      dispatch({ type: "search/clearSearchResults" });
     }
   };
 }
@@ -111,11 +84,16 @@ const searchSlice = createSlice({
       state.selectedRecipeID = null;
     },
 
-    startSearching(state) {
+    clearSearchResults(state) {
+      state.searchResults = null;
+      state.totalNumPages = null;
+    },
+
+    startLoading(state) {
       state.isLoading = true;
     },
 
-    stopSearching(state) {
+    stopLoading(state) {
       state.isLoading = false;
     },
 
@@ -125,10 +103,6 @@ const searchSlice = createSlice({
 
     nextPage(state) {
       if (state.activePage < state.totalNumPages) state.activePage++;
-    },
-
-    selectRecipeID(state, action) {
-      state.selectedRecipeID = action.payload;
     },
 
     displayRecipe(state, action) {
@@ -194,7 +168,7 @@ const searchSlice = createSlice({
       state.currentAccount = action.payload;
     },
 
-    resetSearch(state, action) {
+    resetSearch(state) {
       state.searchResults = null;
       state.totalNumPages = null;
       state.selectedRecipe = null;

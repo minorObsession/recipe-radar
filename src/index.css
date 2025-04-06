@@ -1,11 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /*
 ! tailwindcss v3.4.4 | MIT License | https://tailwindcss.com
 */
+@layer components {
+  .input-base {
+    @apply text-xs md:text-sm lg:text-base bg-stone-500 px-2 py-2 lg:py-3 lg:px-4 placeholder-current placeholder:opacity-60 rounded-lg focus:outline-none focus:ring focus:ring-amber-400 focus:ring-offset-1 w-full;
+  }
 
-/*
-1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
-2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
-*/
+  .inline-input {
+    @apply text-xs md:text-sm lg:text-base  bg-stone-500 py-2 px-3 placeholder-current placeholder:opacity-60 rounded-lg focus:outline-none focus:ring focus:ring-amber-400 focus:ring-offset-1 m-2 w-full;
+  }
+
+  .title-text {
+    @apply text-xs md:text-sm lg:text-base justify-self-end lg:mr-10;
+  }
+
+  .box-background {
+    @apply bg-gradient-to-br from-slate-600/85 to-amber-900/80 rounded-xl;
+  }
+
+  .box-title {
+    @apply uppercase text-center bg-stone-600 rounded-lg w-full font-semibold tracking-wide;
+  }
+
+  .big-box {
+    @apply w-[90vw] max-h-[90vh] lg:w-[90vw] max-h-[80vh] min-h-[80vh] flex flex-col gap-5 lg:gap-8 items-center rounded-lg bg-stone-500 p-3 overflow-y-scroll;
+  }
+
+  .focus-ring {
+    @apply focus:outline-none focus:ring focus:ring-amber-400 focus:ring-offset-1;
+  }
+}
 
 *,
 ::before,
@@ -18,6 +45,8 @@
   /* 2 */
   border-color: #e5e7eb;
   /* 2 */
+  margin: 0;
+  padding: 0;
 }
 
 ::before,
@@ -25,35 +54,18 @@
   --tw-content: "";
 }
 
-/*
-1. Use a consistent sensible line-height in all browsers.
-2. Prevent adjustments of font size after orientation changes in iOS.
-3. Use a more readable tab size.
-4. Use the user's configured `sans` font-family by default.
-5. Use the user's configured `sans` font-feature-settings by default.
-6. Use the user's configured `sans` font-variation-settings by default.
-7. Disable tap highlights on iOS
-*/
-
 html,
 :host {
   line-height: 1.5;
-  /* 1 */
+
   -webkit-text-size-adjust: 100%;
-  /* 2 */
   -moz-tab-size: 4;
-  /* 3 */
   -o-tab-size: 4;
   tab-size: 4;
-  /* 3 */
   font-family: Russo One, sans-serif;
-  /* 4 */
   font-feature-settings: normal;
-  /* 5 */
   font-variation-settings: normal;
-  /* 6 */
   -webkit-tap-highlight-color: transparent;
-  /* 7 */
 }
 
 /*
@@ -61,18 +73,12 @@ html,
 2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
 */
 
-body {
-  margin: 0;
-  /* 1 */
+body,
+#root {
+  /* height: 100vh; */
+  /* min-width: 100vh; */
   line-height: inherit;
-  /* 2 */
 }
-
-/*
-1. Add the correct height in Firefox.
-2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
-3. Ensure horizontal rules are visible by default.
-*/
 
 hr {
   height: 0;

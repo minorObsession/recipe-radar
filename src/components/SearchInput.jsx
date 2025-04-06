@@ -4,7 +4,7 @@ import { inputClassNames } from "../helpers/classNames";
 const SearchInput = forwardRef(({ placeholder, value, onChange }, ref) => {
   return (
     <input
-      className={`${inputClassNames} h-14`}
+      className={`input-base h-14 max-w-[70%] mx-auto sm:col-span-2`}
       type="text"
       value={value}
       onChange={onChange}

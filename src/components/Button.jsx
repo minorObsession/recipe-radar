@@ -61,7 +61,7 @@ function Button({
     );
   return (
     <button
-      className={`flex items-center justify-center lg:text-xl text-center text-sm md:text-base font-semibold md:tracking-wider rounded-full py-3 px-5 bg-stone-500 hover:bg-stone-200 hover:text-stone-800 transition-colors duration-600 whitespace-nowrap ${focusRing} ${additionalClasses}`}
+      className={`flex items-center justify-center lg:text-xl text-center text-sm md:text-base font-semibold md:tracking-wider rounded-full py-3 px-5 bg-stone-500 hover:bg-stone-200 hover:text-stone-800 transition-colors duration-600 whitespace-nowrap w-full ${focusRing} ${additionalClasses}`}
       onClick={onClick}
       onMouseOver={onMouseOver}
       onMouseLeave={onMouseLeave}

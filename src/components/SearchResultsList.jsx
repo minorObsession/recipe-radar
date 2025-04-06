@@ -17,8 +17,9 @@ const SearchResultsList = memo(function SearchResultsList() {
   }, [activePage, searchResults, resultsPerPage]);
 
   return (
-    <ul className="grow w-full">
-      {resultsToDisplay.map((r) => (
+    <ul className="">
+      {/* // !  search key in docs  */}
+      {resultsToDisplay.map((r, i) => (
         <SearchResult result={r} key={r.id} />
       ))}
     </ul>

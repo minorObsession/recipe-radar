@@ -10,62 +10,28 @@ function Homepage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // ! timer
-  // const [currTime, setCurrTime] = useState(0);
-  // const [inputValue, setInputValue] = useState("");
-  // const debouncedSearchInput = useInputChangeDebounce(inputValue, 1000);
-  // const debouncedInputHandler = useInputChangeDebounce(
-  //   fnToRunOnInputChange,
-  //   1000
-  // );
-
-  // function fnToRunOnInputChange() {
-  //   console.log("registering input change");
-  // }
-
-  // useEffect(() => {
-  //   console.log("debounced search input");
-  // }, [debouncedSearchInput]);
-
-  // ! why useEffect() is being called twice in strict mode
-  // ! what is the purpose/benefit of strict mode in DEVELOPMENT
-
-  // ! why we need to clear interval
-  // ! check docs useEffect - CLEANUP FUNCTION - difference when [] and when it has dependencies
-  // ! why doesn't this work bellow without return () =>   callback function
-  // useEffect(() => {
-  //   const timer = setInterval(() => {
-  //     setCurrTime((prev) => ++prev);
-  //   }, 1000);
-  //
-  //   return () => clearInterval(timer);
-  // }, []);
-
   return (
     <>
-      {/* <div className="flex">{currTime}</div> */}
-      {/* <input
-        // value={inputValue}
-        onChange={(e) => {
-          // setInputValue(e.target.value);
-          debouncedInputHandler(e.target.value);
-        }}
-      /> */}
-      {/* <button onClick={processChange}>DEBOUNCE LEADING</button> */}
-      <div className="flex flex-col justify-center items-center py-20 lg:py-10 relative">
-        <h1 className="text-center text-4xl mb-6">RECIPE RADAR</h1>
-        <h1 className=" text-center text-2xl mb-20 lg:mb-10 italic">
-          Meal-planning made easy!
-        </h1>
-        <div className="flex flex-col gap-5 items-center">
-          <h2 className="text-xl mt-5">Start planning like a pro</h2>
+      <div className="h-full w-full flex flex-col justify-around items-center ">
+        {/* // ! headings box */}
+        <div className="">
+          <h1 className="text-center text-4xl lg:text-4xl mb-4 ">
+            RECIPE RADAR
+          </h1>
+          <h1 className=" text-center text-xl lg:text-2xl italic">
+            Meal-planning made easy!
+          </h1>
+        </div>
+        {/* // ! actions box */}
+        <div className="flex text-xl lg:text-2xl flex-col gap-2 lg:gap-3 items-center">
+          <h2 className=" ">Start planning like a pro</h2>
           <Button onClick={() => navigate("signup")}>GET STARTED</Button>
-          <h1 className="text-xl mt-5">Already a member?</h1>
+          <h1 className=" ">Already a member?</h1>
           <Button onClick={() => navigate("login")}>LOGIN</Button>
 
           {/* New "Fake Login" DIV */}
           <div
-            className="flex flex-col items-center gap-5 absolute "
+            className="flex flex-col items-center gap-2 md:gap-3 lg:gap-4 "
             style={{ top: "-8rem" }}
           >
             {" "}
