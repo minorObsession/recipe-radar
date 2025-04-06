@@ -1,9 +1,7 @@
 import { memo } from "react";
 import Pagination from "./Pagination";
 import { useSelector } from "react-redux";
-import LoadingSpinner from "./LoadingSpinner";
 import SearchResultsList from "./SearchResultsList";
-// import SidebarButton from "./SidebarButton";
 
 const Sidebar = memo(function Sidebar() {
   const { isLoading, searchResults } = useSelector((store) => store.search);
@@ -19,7 +17,6 @@ const Sidebar = memo(function Sidebar() {
       }
       }`}
     >
-      {isLoading && <LoadingSpinner />}
       {searchResults?.length > 0 && !isLoading && (
         <>
           <SearchResultsList />
@@ -31,7 +28,6 @@ const Sidebar = memo(function Sidebar() {
           No results found for your search... Please try again
         </h2>
       )}
-      {/* {searchResults?.length > 0 && !isLoading && } */}
     </aside>
   );
 });

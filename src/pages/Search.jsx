@@ -4,48 +4,27 @@ import RecipePreview from "../components/RecipePreview";
 import SearchInput from "../components/SearchInput";
 import Sidebar from "../components/Sidebar";
 import { search } from "../features/searchSlice";
-import { useKeyPress } from "../helpers/useKeyPress";
 import { useInputChangeDebounce } from "../helpers/useInputChangeDebounce(useState+useEffect)";
 
 //
 const Search = memo(function Search() {
   const [query, setQuery] = useState("");
-  // const [areSearchResultsDisplayed]
   const debouncedValue = useInputChangeDebounce(query);
-  const { searchResults } = useSelector((store) => store.search);
   const dispatch = useDispatch();
   const searchRef = useRef();
-
-  // const previousQuery = useRef(null);
 
   const handleSearch = useCallback(
     function handleSearch(query) {
       if (!query || query.length < 3) return;
 
-      // ! query changes - dispatch search
-      // const abortController = new AbortController();
       dispatch(search(query));
-      // setQuery("");
     },
     [dispatch]
   );
 
-  // ! input field focus on Enter press
-  const inputEl = useRef(null);
-  const btnEl = useRef(null);
-
-  // useKeyPress("Enter", () => {
-  //   if (
-  //     document.activeElement === inputEl ||
-  //     document.activeElement === btnEl.current
-  //   )
-  //     return;
-  //   inputEl.current.focus();
-  //   setQuery("");
-  // });
-
   useEffect(() => {
     handleSearch(debouncedValue);
+    searchRef.current.focus();
   }, [debouncedValue, handleSearch]);
 
   return (
@@ -59,9 +38,8 @@ const Search = memo(function Search() {
         placeholder="search our amazing recipes"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        // inputEl={inputEl}
         handleSearch={handleSearch}
-        // ref={searchRef}
+        ref={searchRef}
       />
 
       <RecipePreview />

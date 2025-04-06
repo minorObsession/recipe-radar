@@ -73,11 +73,22 @@ html,
 2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
 */
 
-body,
-#root {
-  /* height: 100vh; */
-  /* min-width: 100vh; */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
   line-height: inherit;
+}
+
+body {
+  overflow-y: auto; /* or scroll if you want to force a scrollbar */
+}
+
+#root {
+  height: 100%;
 }
 
 hr {
@@ -87,6 +98,17 @@ hr {
   /* 2 */
   border-top-width: 1px;
   /* 3 */
+}
+
+a {
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  transition: all 0.2s ease-in;
+}
+
+a:hover,
+a:active {
+  background-color: rgb(120 53 15);
 }
 
 /*

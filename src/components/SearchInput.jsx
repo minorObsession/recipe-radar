@@ -1,5 +1,4 @@
 import { forwardRef } from "react";
-import { inputClassNames } from "../helpers/classNames";
 
 const SearchInput = forwardRef(({ placeholder, value, onChange }, ref) => {
   return (

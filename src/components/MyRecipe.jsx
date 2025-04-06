@@ -5,10 +5,10 @@ import Button from "./Button";
 import SmallSpinner from "./SmallSpinner";
 import { deleteRecipe, addRecipeToWeeklyPlan } from "../features/searchSlice";
 import { next7Days } from "../helpers/helperFunctions";
+import { NavLink } from "react-router-dom";
 
 function MyRecipe({ recipe }) {
   const dispatch = useDispatch();
-
   const [isLoading, setIsLoading] = useState(false);
   const [isSelectExpanded, setIsSelectExpanded] = useState(false);
 
@@ -32,13 +32,18 @@ function MyRecipe({ recipe }) {
 
   return (
     <div className="items-center justify-center grid grid-rows-[60px_5fr] grid-cols-1">
-      <h3 className="text-center line-clamp-2 mb-2  ">{recipe?.title}</h3>
+      <NavLink
+        to={`/app/search/${recipe.id}`}
+        className="text-center font-bold text-base lg:text-lg line-clamp-2 mb-2  "
+      >
+        {recipe?.title}
+      </NavLink>
       <div className="relative flex justify-center w-full h-full ">
         <img
           src={recipe.imageUrl}
           className=" w-[clamp(200px,100%,500px)] h-[clamp(250px,30vw,400px)]
 object-cover text-center p-2 lg:p-5 opacity-65 rounded-3xl "
-        ></img>
+        />
         {/* // ! upper overlay */}
         <div className="absolute top-4 lg:top-10 flex items-center gap-3 bg-stone-500 rounded-lg p-1.5 transition-all duration-700">
           <span className="text-xs sm:text-sm  italic whitespace-nowrap">

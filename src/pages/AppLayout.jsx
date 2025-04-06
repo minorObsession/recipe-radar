@@ -1,13 +1,6 @@
-import { useRef } from "react";
 import ContentBox from "../components/ContentBox";
-import Footer from "../components/Footer";
-import SearchInput from "../components/SearchInput";
-import Sidebar from "../components/Sidebar";
+
 import Tabs from "../components/Tabs";
-import { boxBackgroundClass } from "../helpers/classNames";
-import { useKeyPress } from "../helpers/useKeyPress";
-import MyRecipes from "./MyRecipes";
-import Search from "./Search";
 
 function AppLayout() {
   return (

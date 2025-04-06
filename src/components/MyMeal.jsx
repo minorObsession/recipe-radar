@@ -36,7 +36,7 @@ function MyMeal({ recipes, i }) {
   return (
     // ! EACH DAY GRID
     <div
-      className={`grid grid-cols-[2fr_3fr] grid-rows-[1fr_5fr] gap-2 bg-stone-600 p-2 rounded-xl `}
+      className={`h-[300px] grid grid-cols-[2fr_3fr] grid-rows-[1fr_5fr] gap-2 bg-stone-600 p-2 rounded-xl `}
     >
       {/* // !  */}
       <div className="col-span-2 flex items-center md:gap-5 justify-between ">
@@ -78,7 +78,7 @@ function MyMeal({ recipes, i }) {
         >
           <NavLink
             to={`/app/search/${currDayRecipe?.id}`}
-            className="text-center line-clamp-3 "
+            className="text-center  "
           >
             {currDayRecipe?.title}
           </NavLink>

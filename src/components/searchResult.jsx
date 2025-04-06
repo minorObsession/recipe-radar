@@ -1,9 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
-import {
-  selectRecipeID,
-  fetchRecipe,
-  selectedRecipe,
-} from "../features/searchSlice";
+import { useDispatch } from "react-redux";
+import { fetchRecipe } from "../features/searchSlice";
 import { memo, useCallback } from "react";
 import { NavLink } from "react-router-dom";
 

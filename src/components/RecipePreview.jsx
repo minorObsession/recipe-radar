@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { memo, useEffect, useState } from "react";
-
+import LoadingSpinner from "./LoadingSpinner";
 import Button from "./Button";
 import Ingredients from "./Ingredients";
 import { saveRecipe, deleteRecipe, fetchRecipe } from "../features/searchSlice";
@@ -11,21 +11,21 @@ const RecipePreview = memo(function RecipePreview() {
   const { selectedRecipe, savedRecipes } = useSelector((store) => store.search);
   const { id } = useParams();
   const dispatch = useDispatch();
-
   const isInMyRecipes = savedRecipes
     ?.map((r) => r.id)
     .includes(selectedRecipe?.id);
+  const { isLoading: isRecipeLoading } = useSelector((store) => store.search);
 
   const [isLoading, setIsLoading] = useState(false);
 
   // ! FIX THIS
-  // // Fetch recipe based on URL on mount
-  // useEffect(() => {
-  //   if (!id) return;
-  //   const abortController = new AbortController();
-  //   dispatch(fetchRecipe(id, abortController));
-  //   return () => abortController.abort();
-  // }, [id, dispatch]);
+  // Fetch recipe based on URL on mount
+  useEffect(() => {
+    if (!id) return;
+    const abortController = new AbortController();
+    dispatch(fetchRecipe(id, abortController));
+    return () => abortController.abort();
+  }, [id, dispatch]);
 
   function handleAddRecipe() {
     setIsLoading(true);
@@ -44,7 +44,7 @@ const RecipePreview = memo(function RecipePreview() {
   }
 
   if (!selectedRecipe) return null;
-
+  if (isRecipeLoading) return <LoadingSpinner />;
   return (
     <div className="sm:col-span-2 flex flex-col gap-2 lg:gap-5 lg:flex-row  items-center lg:items-start">
       {/* // ! IMAGE BOX */}

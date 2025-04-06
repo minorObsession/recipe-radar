@@ -3,14 +3,11 @@ import SidebarButton from "./SidebarButton";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { resetSearch, searchResults } from "../features/searchSlice";
+import { resetSearch } from "../features/searchSlice";
 
 function Tabs() {
-  const { currentAccount, savedRecipes, searchResults } = useSelector(
-    (store) => store.search
-  );
+  const { currentAccount, savedRecipes } = useSelector((store) => store.search);
   const [showSavedRecipes, setShowSavedRecipes] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -20,16 +17,15 @@ function Tabs() {
     const recipe = savedRecipes.find((r) => r.title === recipeName);
 
     navigate(`/app/search/${recipe.id}`);
+    setShowSavedRecipes(false);
   }
 
   function refreshPage() {
     // if (!searchResults) return;
     setTimeout(() => {
-      setIsLoading(true);
       setTimeout(() => {
         dispatch(resetSearch());
         navigate(`/app/search`);
-        setIsLoading(false);
       }, 1000);
 
       // dispatch(stopSearching());
@@ -52,31 +48,34 @@ function Tabs() {
 
       <div
         onMouseEnter={() => setShowSavedRecipes(true)}
-        onMouseLeave={() => setShowSavedRecipes(false)}
+        onMouseLeave={() =>
+          setTimeout(() => {
+            setShowSavedRecipes(false);
+          }, 1000)
+        }
         className="relative"
       >
-        <SidebarButton
-          additionalClassNames="text-amber-500  "
-          // onMouseEnter={() => {
-          //   setShowSavedRecipes(true);
-          //   return <span>1111111</span>;
-          // }}
-          // onMouseLeave={() => setShowSavedRecipes(false)}
-        >
+        <SidebarButton additionalClassNames="text-amber-500  ">
           {currentAccount?.name}
         </SidebarButton>
         {showSavedRecipes && (
-          <div className="absolute top-6 right-0 md:top-7 md:right-0 flex flex-col z-50 bg-stone-600 p-5 rounded-xl transition-opacity duration-300 opacity-60 hover:opacity-100">
+          <div
+            className="absolute overflow-y-scroll top-6 right-0 md:top-7 md:right-0 flex flex-col z-50 bg-stone-600 p-5 rounded-xl transition-opacity duration-300 opacity-60 hover:opacity-100 
+"
+          >
             <div className="flex flex-col gap-2 ">
-              <h2 className="self-center text-center mb-4 font-semibold tracking-wider bg-stone-500 px-5 py-2 rounded-lg">
+              <NavLink
+                to="/app/my-recipes"
+                className="self-center text-center mb-4 font-semibold tracking-wider bg-stone-500 px-5 py-2 rounded-lg"
+              >
                 My Recipes
-              </h2>
+              </NavLink>
               <ul className="flex flex-col gap-3 ">
                 {savedRecipes.map((r) => (
                   <li
                     // ! navigate to recipePreview
                     onClick={handleSelectRecipe}
-                    className="cursor-pointer  "
+                    className="cursor-pointer hover:bg-amber-900 transition duration-300 p-2 rounded-lg"
                     key={r.id}
                   >
                     {r.title}
