@@ -29,8 +29,8 @@ function MyRecipes() {
   }, [savedRecipes, setStoredRecipes]);
 
   return (
-    <div className={`${bigBox}`}>
-      <h2 className={`${bigBoxTitle}`}>
+    <div className={`big-box`}>
+      <h2 className={`box-title`}>
         Saved Recipes
         {/* // ! self-close input */}
         <input
@@ -40,7 +40,7 @@ function MyRecipes() {
         />
       </h2>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-y-4 sm:gap-y-10 gap-x-6">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-y-4 sm:gap-y-6 sm:gap-x-3 lg:gap-x-6 max-w-full">
         {savedRecipes.map((recipe) => (
           <MyRecipe recipe={recipe} key={recipe.id} />
         ))}

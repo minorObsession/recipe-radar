@@ -16,8 +16,8 @@ function Ingredients() {
   }
 
   return (
-    <div className=" w-full h-full grid grid-cols-2 items-start gap-6  rounded-lg bg-stone-500 p-3 ">
-      <div className="col-[1/_span_2] flex lg:flex-grow lg:w-full items-center justify-center gap-3 bg-stone-600 w-full rounded-lg text-base p-1 lg:p-2 ">
+    <div className=" w-full h-[clamp(200px,100%,400px)] lg:h-[clamp(200px,100%,600px)] grid grid-cols-2 items-start gap-2  rounded-lg bg-stone-500 p-3 ">
+      <header className="col-[1/_span_2] flex items-center justify-center gap-3 bg-stone-600 w-full rounded-lg text-lg lg:text-2xl p-1 lg:p-2 ">
         <span>servings:</span>
         <Button
           type="round"
@@ -30,7 +30,7 @@ function Ingredients() {
         <Button type="round" onClick={increaseServings}>
           +
         </Button>
-      </div>
+      </header>
       {selectedRecipe.ingredients.map((ing, i) => (
         <Ingredient
           numServings={numServings}

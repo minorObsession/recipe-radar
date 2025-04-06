@@ -25,7 +25,7 @@ const Search = memo(function Search() {
       // ! query changes - dispatch search
       // const abortController = new AbortController();
       dispatch(search(query));
-      setQuery("");
+      // setQuery("");
     },
     [dispatch]
   );
@@ -34,15 +34,15 @@ const Search = memo(function Search() {
   const inputEl = useRef(null);
   const btnEl = useRef(null);
 
-  useKeyPress("Enter", () => {
-    if (
-      document.activeElement === inputEl ||
-      document.activeElement === btnEl.current
-    )
-      return;
-    inputEl.current.focus();
-    setQuery("");
-  });
+  // useKeyPress("Enter", () => {
+  //   if (
+  //     document.activeElement === inputEl ||
+  //     document.activeElement === btnEl.current
+  //   )
+  //     return;
+  //   inputEl.current.focus();
+  //   setQuery("");
+  // });
 
   useEffect(() => {
     handleSearch(debouncedValue);

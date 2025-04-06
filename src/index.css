@@ -6,7 +6,7 @@
 */
 @layer components {
   .input-base {
-    @apply text-xs md:text-sm lg:text-base bg-stone-500 px-2 py-2 lg:py-3 lg:px-4 placeholder-current placeholder:opacity-60 rounded-lg focus:outline-none focus:ring focus:ring-amber-400 focus:ring-offset-1 w-full;
+    @apply text-base md:text-lg lg:text-xl bg-stone-500 px-2 py-2 lg:py-3 lg:px-4 placeholder-current placeholder:opacity-60 rounded-lg focus:outline-none focus:ring focus:ring-amber-400 focus:ring-offset-1 w-full;
   }
 
   .inline-input {
@@ -26,7 +26,7 @@
   }
 
   .big-box {
-    @apply w-[90vw] max-h-[90vh] lg:w-[90vw] max-h-[80vh] min-h-[80vh] flex flex-col gap-5 lg:gap-8 items-center rounded-lg bg-stone-500 p-3 overflow-y-scroll;
+    @apply col-span-2 flex mx-auto w-full flex-col gap-5 lg:gap-8 items-center rounded-lg bg-stone-500 p-3 overflow-y-scroll;
   }
 
   .focus-ring {

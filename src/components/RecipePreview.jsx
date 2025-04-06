@@ -46,18 +46,16 @@ const RecipePreview = memo(function RecipePreview() {
   if (!selectedRecipe) return null;
 
   return (
-    // <article className="sm:col-span-2 lg:flex justify-center lg:justify-between lg:gap-10 mt-5 lg:mt-8 ">
-    <div className="sm:col-span-2 flex flex-col gap-2 lg:flex-row  items-center lg:items-start">
+    <div className="sm:col-span-2 flex flex-col gap-2 lg:gap-5 lg:flex-row  items-center lg:items-start">
       {/* // ! IMAGE BOX */}
 
-      <div className="relative h-[clamp(200px,100%,400px)] w-[clamp(300px,100%,1000px)]">
-        {/* <div className="relative h-[200px] w-[300px] md:h-[300px] md:w-[300px] lg:h-[400px] lg:w-[400px] xl:h-[500px] xl:w-[500px]"> */}
+      <div className="relative h-[clamp(200px,100%,400px)] lg:h-[clamp(200px,100%,600px)] w-[clamp(300px,100%,1000px)]">
         <img
           className="rounded-lg opacity-80 h-full w-full object-cover"
           src={selectedRecipe.imageUrl}
           alt={selectedRecipe.title}
         />
-        <div className="absolute right-0 bottom-0 max-h-10 lg:bottom-2 flex items-center gap-2 justify-end m-2 bg-stone-500 rounded-lg p-2">
+        <div className="absolute right-3 bottom-2  lg:bottom-5 lg:right-4 flex items-center gap-2 justify-end m-2 bg-stone-500 rounded-lg p-2">
           <span className="text-sm lg:text-base italic">
             {isInMyRecipes ? "Recipe saved \u2713" : "Add to my recipes"}
           </span>

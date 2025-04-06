@@ -5,7 +5,7 @@ import {
   selectedRecipe,
 } from "../features/searchSlice";
 import { memo, useCallback } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const SearchResult = memo(function SearchResult({ result }) {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const SearchResult = memo(function SearchResult({ result }) {
   return (
     <li>
       <NavLink
-        className="grid grid-rows-1 grid-cols-[1fr_5fr] max-h-12 sm:max-h-20 gap sm:gap-3  p-3 items-center rounded-xl border-b border-amber-800 cursor-pointer hover:text-amber-300 transition-colors duration-600  "
+        className="grid grid-rows-1 grid-cols-[1fr_5fr] max-h-12 w-full sm:max-h-20 gap sm:gap-3  p-3 items-center rounded-xl border-b border-amber-800 cursor-pointer hover:text-amber-300 transition-colors duration-600  "
         onClick={handleSelect}
         to={`${result.id}`}
       >

@@ -10,7 +10,7 @@ const Sidebar = memo(function Sidebar() {
 
   return (
     <aside
-      className={` h-fit mx-auto order-2 sm:col-[1/2] sm:w-[35vw] lg:w-[30vw] bg-stone-500 sm:pt-5 flex flex-col gap-6 items-start lg:items-center rounded-lg text-amber-500 text-xl overflow-auto ${
+      className={`h-fit mx-auto order-2 md:col-[1/2] w-[clamp(280px,80%,600px)] lg:w-[35vw] bg-stone-500 sm:pt-5 flex flex-col gap-6 items-start lg:items-center rounded-lg text-amber-500 text-xl overflow-auto ${
         !searchResults?.length && "bg-transparent"
       } ${
         isLoading ||

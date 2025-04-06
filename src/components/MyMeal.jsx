@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "./Button";
 import { weekdays } from "../helpers/config";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { removeRecipeFromWeeklyPlan } from "../features/searchSlice";
@@ -17,16 +17,21 @@ function MyMeal({ recipes, i }) {
     weekdaysPlanned.includes(w) ? true : false
   );
 
+  const currDayRecipe = recipes.find((r) => r.weekday === weekdays[i]);
+
   function handleRemoveRecipe() {
-    // console.log(weeklyRecipes);
-    const recipe = recipes.find((r) => r.weekday === weekdays[i]);
-    const recipeToDelete = weeklyRecipes.find((r) => r === recipe);
+    const recipeToDelete = weeklyRecipes.find((r) => r === currDayRecipe);
     setIsLoading(true);
     setTimeout(() => {
       dispatch(removeRecipeFromWeeklyPlan(recipeToDelete));
       setIsLoading(false);
     }, 1000);
   }
+
+  const protein = Math.ceil(Math.random() * 30 + 10); // 10–40g
+  const carbs = Math.ceil(Math.random() * 60 + 20); // 20–80g
+  const fat = Math.ceil(Math.random() * 25 + 5); // 5–30g
+  const kcal = Math.ceil(protein * 4 + carbs * 4 + fat * 9);
 
   return (
     // ! EACH DAY GRID
@@ -58,33 +63,32 @@ function MyMeal({ recipes, i }) {
         )}
       </div>
       {/* // ! conditionally show img if not collapsed */}
-      {!isCollapsed && (
+      {!isCollapsed && currDayRecipe?.imageUrl && (
         <img
-          src={recipes.find((r) => r.weekday === weekdays[i])?.imageUrl}
-          className="col-[2_/1] text-center rounded-2xl self-center max-w-full h-auto max-h-48 min-h object-cover"
-        ></img>
+          src={currDayRecipe?.imageUrl}
+          className="rounded-2xl self-center w-[clamp(50px,100%,150px)] h-[clamp(50px,100%,150px)] object-cover"
+        />
       )}
+
       {daysPlannedOrNot[i] ? (
         <div
-          className={`flex flex-col gap-3 justify-around ${
+          className={`flex  flex-col gap-3 justify-around ${
             isCollapsed && "col-span-2 self-center"
           }`}
         >
-          <Link
-            to={`/app/search/${
-              recipes.find((r) => r.weekday === weekdays[i])?.id
-            }`}
-            className="text-center "
+          <NavLink
+            to={`/app/search/${currDayRecipe?.id}`}
+            className="text-center line-clamp-3 "
           >
-            {recipes.find((r) => r.weekday === weekdays[i])?.title}
-          </Link>
+            {currDayRecipe?.title}
+          </NavLink>
           {/* // ! conditionally show div if not collapsed */}
           {!isCollapsed && (
             <div className="text-sm grid grid-cols-2 gap-1 text-center font-light">
-              <span>protein:</span>
-              <span>carbs:</span>
-              <span>kcal:</span>
-              <span>fat:</span>
+              <span>protein: {protein}g</span>
+              <span>carbs: {carbs}g</span>
+              <span>kcal: {kcal}</span>
+              <span>fat: {fat}g</span>
             </div>
           )}
         </div>
