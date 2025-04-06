@@ -49,13 +49,8 @@ const RecipePreview = memo(function RecipePreview() {
     // <article className="sm:col-span-2 lg:flex justify-center lg:justify-between lg:gap-10 mt-5 lg:mt-8 ">
     <div className="sm:col-span-2 flex flex-col gap-2 lg:flex-row  items-center lg:items-start">
       {/* // ! IMAGE BOX */}
-      {/* // ! i WAS HERE - CLAMP FN */}
-      {/* // ! i WAS HERE - CLAMP FN */}
-      {/* // ! i WAS HERE - CLAMP FN */}
-      {/* // ! i WAS HERE - CLAMP FN */}
-      {/* // ! i WAS HERE - CLAMP FN */}
-      {/* // ! i WAS HERE - CLAMP FN */}
-      <div className="relative h-[clamp(200px,70vw,500px)] w-[clamp(300px,50vw,500px)]">
+
+      <div className="relative h-[clamp(200px,100%,400px)] w-[clamp(300px,100%,1000px)]">
         {/* <div className="relative h-[200px] w-[300px] md:h-[300px] md:w-[300px] lg:h-[400px] lg:w-[400px] xl:h-[500px] xl:w-[500px]"> */}
         <img
           className="rounded-lg opacity-80 h-full w-full object-cover"
