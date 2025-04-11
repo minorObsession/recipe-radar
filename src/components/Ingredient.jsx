@@ -2,7 +2,7 @@ import { decimalToFraction } from "../helpers/helperFunctions";
 
 function Ingredient({ ingredient, numServings }) {
   return (
-    <div className=" lg:text-lg flex gap-2 text-amber-300 ">
+    <div className="text-sm md:text-base flex gap-2 text-amber-300 ">
       <span>- </span>
       <div>
         <span>

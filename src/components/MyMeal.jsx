@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { removeRecipeFromWeeklyPlan } from "../features/searchSlice";
 import SmallSpinner from "./SmallSpinner";
-import LoadingSpinner from "./LoadingSpinner";
+import LoadingSpinner from "./CenteredLoadingSpinner";
 
 function MyMeal({ recipes, i }) {
   const { weeklyRecipes } = useSelector((store) => store.search);
@@ -37,11 +37,11 @@ function MyMeal({ recipes, i }) {
 
   return (
     // ! EACH DAY GRID
-    <div
-      className={`h-[300px] grid grid-cols-[2fr_3fr] grid-rows-[1fr_5fr] gap-2 bg-stone-600 p-2 rounded-xl `}
+    <article
+      className={`relative h-fit sm:h-[300px] grid grid-cols-2 grid-rows-[3rem_fit-content_1fr_1fr] sm:grid-rows-[3rem_4rem_1fr_1fr] gap-2 bg-stone-600 p-2 rounded-xl `}
     >
-      {/* // !  */}
-      <div className="col-span-2 flex items-center md:gap-5 justify-between ">
+      {/* // ! DAY OF THE WEEK + CIONS  */}
+      <div className="col-span-2 flex items-center md:gap-5 justify-between">
         <h3
           className={`text-center col-span-2 ${
             daysPlannedOrNot[i] || "opacity-60"
@@ -64,8 +64,14 @@ function MyMeal({ recipes, i }) {
           </div>
         )}
       </div>
-
-      <div className="relative flex items-center w-full h-full">
+      <NavLink
+        to={`/app/search/${currDayRecipe?.id}`}
+        className="text-center col-span-2 "
+      >
+        {currDayRecipe?.title}
+      </NavLink>
+      {/* // ! IMAGE BOX */}
+      <div className=" col-span-2 h-[150px] w-full relative flex items-center justify-center">
         {currDayRecipe && !imageLoaded && (
           <div className="absolute inset-0 flex items-center justify-center">
             <LoadingSpinner />
@@ -75,7 +81,7 @@ function MyMeal({ recipes, i }) {
         {!isCollapsed && currDayRecipe?.imageUrl && (
           <img
             src={currDayRecipe?.imageUrl}
-            className="rounded-2xl self-center w-[clamp(50px,100%,150px)] h-[clamp(50px,100%,150px)] object-cover"
+            className="rounded-2xl  self-center w-[clamp(200px,100%,300px)] h-[clamp(100px,100%,150px)] object-cover"
             onLoad={() => setImageLoaded(true)}
             alt={currDayRecipe?.title}
           />
@@ -84,19 +90,13 @@ function MyMeal({ recipes, i }) {
 
       {daysPlannedOrNot[i] ? (
         <div
-          className={`flex  flex-col gap-3 justify-around ${
+          className={`flex row-[4/5] col-span-2 flex-col gap-3 justify-around ${
             isCollapsed && "col-span-2 self-center"
           }`}
         >
-          <NavLink
-            to={`/app/search/${currDayRecipe?.id}`}
-            className="text-center  "
-          >
-            {currDayRecipe?.title}
-          </NavLink>
           {/* // ! conditionally show div if not collapsed */}
           {!isCollapsed && (
-            <div className="text-sm grid grid-cols-2 gap-1 text-center font-light">
+            <div className=" text-sm grid grid-cols-2 gap-1 text-center font-light">
               <span>protein: {protein}g</span>
               <span>carbs: {carbs}g</span>
               <span>kcal: {kcal}</span>
@@ -105,9 +105,9 @@ function MyMeal({ recipes, i }) {
           )}
         </div>
       ) : (
-        <span className="col-span-2 row-[2_/span_2] text-center self-center text-amber-500">{`Go to My Recipes and Plan ${weekdays[i]}'s meal`}</span>
+        <span className="absolute inset-0 text-center self-center text-amber-500">{`Go to My Recipes and Plan ${weekdays[i]}'s meal`}</span>
       )}
-    </div>
+    </article>
   );
 }
 

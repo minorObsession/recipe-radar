@@ -21,6 +21,7 @@ export function search(query) {
   if (!query) return;
   return async function fetchSearchResults(dispatch) {
     dispatch({ type: "search/startLoading" });
+
     try {
       const url = `${BASE_URL}?search=${query}&key=${API_KEY}`;
       const response = await fetch(url);

@@ -15,10 +15,12 @@ function Ingredients() {
     setNumServings((s) => (s > 1 ? --s : s));
   }
 
+  // h-[clamp(200px,100%,400px)]
+  // lg:h-[clamp(200px,100%,600px)]
   return (
-    <div className=" w-full h-[clamp(200px,100%,400px)] lg:h-[clamp(200px,100%,600px)] grid grid-cols-2 items-start gap-2  rounded-lg bg-stone-500 p-3 ">
-      <header className="col-[1/_span_2] flex items-center justify-center gap-3 bg-stone-600 w-full rounded-lg text-lg lg:text-2xl p-1 lg:p-2 ">
-        <span>servings:</span>
+    <article className=" w-full h-full grid grid-cols-2 items-start gap-2  rounded-lg bg-stone-500 p-3 ">
+      <header className="col-[1/_span_2] flex items-center justify-center gap-3 bg-stone-600 w-full rounded-lg text-base lg:text-lg p-1 lg:p-2 ">
+        <span className="p-2">servings:</span>
         <Button
           type="round"
           // disabled={numServings === 1}
@@ -38,7 +40,7 @@ function Ingredients() {
           key={ing.description + i}
         />
       ))}
-    </div>
+    </article>
   );
 }
 

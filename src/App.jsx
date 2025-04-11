@@ -16,7 +16,7 @@ import RecipePreview from "./components/RecipePreview";
 // * MOBILE: upon click on recipe autofocus brings up the phone keyboard (undesired autofous!!)]
 // * INSTEAD TO DO THAT WHEN CLICKED ON SEARCH!! NOT WHEN SEARCH PAGE IS ACTIVE
 // ! MOBILE - MEAL PLANNING CARD TOO NARROW! LOOKS SQUSHED
-// * no initial loading spinner for SEARCH!
+// ! MOBILE- ING tet too large
 
 function App() {
   return (

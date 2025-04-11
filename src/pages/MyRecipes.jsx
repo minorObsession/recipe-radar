@@ -29,7 +29,7 @@ function MyRecipes() {
   }, [savedRecipes, setStoredRecipes]);
 
   return (
-    <div className={`big-box`}>
+    <section className={`big-box`}>
       <h2 className={`box-title`}>
         Saved Recipes
         {/* // ! self-close input */}
@@ -46,7 +46,7 @@ function MyRecipes() {
         ))}
         <Outlet />
       </div>
-    </div>
+    </section>
   );
 }
 

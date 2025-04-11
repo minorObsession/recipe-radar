@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { memo, useEffect, useState } from "react";
-import LoadingSpinner from "./LoadingSpinner";
+import LoadingSpinner from "./CenteredLoadingSpinner";
 import Button from "./Button";
 import Ingredients from "./Ingredients";
 import { saveRecipe, deleteRecipe, fetchRecipe } from "../features/searchSlice";
@@ -44,12 +44,12 @@ const RecipePreview = memo(function RecipePreview() {
   }
 
   if (!selectedRecipe) return null;
-  if (isRecipeLoading) return <LoadingSpinner />;
+
   return (
     <div className="sm:col-span-2 flex flex-col gap-2 lg:gap-5 lg:flex-row  items-center lg:items-start">
       {/* // ! IMAGE BOX */}
-
       <div className="relative h-[clamp(200px,100%,400px)] lg:h-[clamp(200px,100%,600px)] w-[clamp(300px,100%,1000px)]">
+        {isRecipeLoading && <LoadingSpinner />}
         <img
           className="rounded-lg opacity-80 h-full w-full object-cover"
           src={selectedRecipe.imageUrl}

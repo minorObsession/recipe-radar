@@ -6,7 +6,7 @@ import SmallSpinner from "./SmallSpinner";
 import { deleteRecipe, addRecipeToWeeklyPlan } from "../features/searchSlice";
 import { next7Days } from "../helpers/helperFunctions";
 import { NavLink } from "react-router-dom";
-import LoadingSpinner from "./LoadingSpinner";
+import LoadingSpinner from "./CenteredLoadingSpinner";
 
 function MyRecipe({ recipe }) {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ function MyRecipe({ recipe }) {
   }
 
   return (
-    <div className="items-center justify-center grid grid-rows-[60px_5fr] grid-cols-1">
+    <article className="items-center justify-center grid grid-rows-[60px_5fr] grid-cols-1">
       <NavLink
         to={`/app/search/${recipe.id}`}
         className="text-center font-bold text-base lg:text-lg line-clamp-2 mb-2"
@@ -40,11 +40,8 @@ function MyRecipe({ recipe }) {
         {recipe?.title}
       </NavLink>
       <div className="relative flex justify-center w-full h-full">
-        {!imageLoaded && (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <LoadingSpinner />
-          </div>
-        )}
+        {/* // ! loading spinner if not yet loaded */}
+        {!imageLoaded && <LoadingSpinner />}
         <img
           src={recipe.imageUrl}
           className={`w-[clamp(200px,100%,500px)] h-[clamp(250px,30vw,400px)]
@@ -62,7 +59,7 @@ function MyRecipe({ recipe }) {
           </span>
 
           <select
-            className={` bg-amber-900 italic  max-w-[8rem] text-sm p-1 rounded-full transition-all duration-700 `}
+            className={`bg-amber-900 italic  max-w-[8rem] text-sm p-1 rounded-full transition-all duration-700 `}
             onFocus={() => setIsSelectExpanded(true)}
             onBlur={() => setIsSelectExpanded(false)}
             value={selectedWeekday}
@@ -96,8 +93,8 @@ function MyRecipe({ recipe }) {
         </div>
         {/* // ! lower overlay */}
         <div className="absolute bottom-4 lg:bottom-10 flex items-center gap-3 bg-stone-500 rounded-lg p-1.5 transition-all duration-700">
-          <span className="text-xs sm:text-sm  italic">
-            Remove from my recipes{" "}
+          <span className="text-xs sm:text-sm italic">
+            Remove from my recipes
           </span>
           <Button
             onClick={handleDeleteRecipe}
@@ -108,7 +105,7 @@ function MyRecipe({ recipe }) {
           </Button>
         </div>
       </div>
-    </div>
+    </article>
   );
 }
 
