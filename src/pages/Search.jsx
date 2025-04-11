@@ -13,6 +13,8 @@ const Search = memo(function Search() {
   const debouncedValue = useInputChangeDebounce(query);
   const dispatch = useDispatch();
   const searchRef = useRef();
+  const previousQuery = useRef(query);
+  console.log(previousQuery.current);
 
   const handleSearch = useCallback(
     function handleSearch(query) {
@@ -23,15 +25,16 @@ const Search = memo(function Search() {
   );
 
   useEffect(() => {
+    if (selectedRecipe && query === previousQuery.current) return;
     handleSearch(debouncedValue);
-    if (!selectedRecipe) {
-      searchRef.current.focus();
-    }
-  }, [debouncedValue, handleSearch]);
 
+    searchRef.current.focus();
+    // setQuery("");
+  }, [debouncedValue, handleSearch, selectedRecipe, query]); // maybe remove selRecipe from dep array
   // Explanation: Removing selectedRecipe from the dependency array
   // prevents the effect from re-running when a recipe is selected.
   // This allows the recipe to remain selected when clicked.
+
   return (
     // ! whole grid
     <article

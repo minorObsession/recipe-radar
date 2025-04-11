@@ -62,7 +62,7 @@ function Tabs() {
       </NavLink>
 
       {/* // ! hover dropdown stuff */}
-      <div
+      <menu
         onClick={() => setShowSavedRecipes((prev) => !prev)}
         onMouseEnter={() => setShowSavedRecipes(true)}
         onMouseLeave={() => setTimeout(() => setShowSavedRecipes(false), 500)}
@@ -77,7 +77,7 @@ function Tabs() {
           savedRecipes={savedRecipes}
           handleSelectRecipe={handleSelectRecipe}
         />
-      </div>
+      </menu>
     </nav>
   );
 }

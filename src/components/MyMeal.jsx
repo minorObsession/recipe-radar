@@ -36,9 +36,10 @@ function MyMeal({ recipes, i }) {
   const kcal = Math.ceil(protein * 4 + carbs * 4 + fat * 9);
 
   return (
-    // ! EACH DAY GRID
+    // ! EACH DAY CARD - grid
     <article
-      className={`relative h-fit sm:h-[350px] grid grid-cols-2 grid-rows-[3rem_fit-content_1fr_1fr] sm:grid-rows-[3rem_4rem_1fr_1fr] gap-2 bg-stone-600 p-2 rounded-xl `}
+      className={`relative h-fit sm:h-[400px] grid grid-cols-2 grid-rows-[3rem_fit-content_1fr_1fr] sm:grid-rows-[2rem_4rem_1fr_1fr] gap-2 bg-stone-600 p-3 rounded-xl drop-shadow-sm shadow-md shadow-current`}
+      style={{ boxShadow: "1px 1px 5px" }}
     >
       {/* // ! DAY OF THE WEEK + CIONS  */}
       <div className="col-span-2 flex items-center md:gap-5 justify-between">
@@ -66,7 +67,10 @@ function MyMeal({ recipes, i }) {
       </div>
       <NavLink
         to={`/app/search/${currDayRecipe?.id}`}
-        className="text-center col-span-2 "
+        className={`w-[70%] mx-auto text-center col-span-2 self-center ${
+          isCollapsed &&
+          "absolute flex items-center justify-center inset-0 text-center z-10"
+        }`}
       >
         {currDayRecipe?.title}
       </NavLink>
@@ -77,9 +81,10 @@ function MyMeal({ recipes, i }) {
         {!isCollapsed && currDayRecipe?.imageUrl && (
           <img
             src={currDayRecipe?.imageUrl}
-            className={`rounded-2xl self-center w-[clamp(200px,100%,300px)] h-[clamp(100px,100%,150px)] object-cover transition-opacity duration-300 ${
+            className={`rounded-2xl self-center w-[clamp(75%,100%,300px)] h-[clamp(100px,100%,150px)] object-cover shadow-amber-300  shadow-md transition-opacity duration-300 ${
               imageLoaded ? "opacity-80" : "opacity-0"
             }`}
+            style={{ boxShadow: "2px 2px 8px" }}
             onLoad={() => setImageLoaded(true)}
             alt={currDayRecipe?.title}
           />
@@ -103,7 +108,8 @@ function MyMeal({ recipes, i }) {
           )}
         </div>
       ) : (
-        <span className="absolute inset-0 text-center self-center text-amber-500">{`Go to My Recipes and Plan ${weekdays[i]}'s meal`}</span>
+        // ! when no planned meal
+        <span className="absolute inset-0 flex items-center justify-center text-center max-w-[80%] mx-auto text-amber-500">{`Go to My Recipes and Plan ${weekdays[i]}'s meal`}</span>
       )}
     </article>
   );

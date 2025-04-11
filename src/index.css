@@ -26,7 +26,7 @@
   }
 
   .big-box {
-    @apply col-span-2 flex mx-auto w-full flex-col gap-5 lg:gap-8 items-center rounded-lg bg-stone-500 p-3 overflow-y-scroll;
+    @apply col-span-2 flex mx-auto w-full flex-col gap-5 lg:gap-8 items-center rounded-lg bg-stone-500 p-3 sm:p-4 overflow-y-scroll;
   }
 
   .focus-ring {
@@ -74,9 +74,9 @@ html,
 
 html,
 body {
-  height: 100ssvh;
+  height: 100svh;
   height: 100%;
-
+  background-color: rgb(120 113 108);
   overflow-x: hidden;
 
   scroll-behavior: smooth;
@@ -98,9 +98,16 @@ hr {
 }
 
 a {
-  padding: 0.3rem 0.6rem;
+  padding: 0.4rem 0.8rem;
   border-radius: 8px;
   transition: all 0.2s ease-in;
+}
+
+select:active,
+select:focus {
+  outline: 2px solid rgb(252 211 77);
+  border-color: rgb(252 211 77);
+  box-shadow: 2px 2px 5px rgba(120 53 15);
 }
 
 a:hover,
@@ -111,7 +118,7 @@ a:active {
 .active-tab {
   background-color: rgb(120 53 15);
   scale: 1.05;
-  padding: 0.45rem 0.6rem;
+  padding: 0.5rem 0.8rem;
 }
 
 /*

@@ -10,13 +10,11 @@ import AppLayout from "./pages/AppLayout";
 import Search from "./pages/Search";
 import RecipePreview from "./components/RecipePreview";
 
-// ! IDEAS - TO DO:
+// ! TO DO:
 
+// ! FINISH WORK WITH QUERY AND PREVIUS QUERY (SEARCH COMPONENTs)
 // * MOBILE: upon click on recipe autofocus brings up the phone keyboard (undesired autofous!!)]
 // * INSTEAD TO DO THAT WHEN CLICKED ON SEARCH!! NOT WHEN SEARCH PAGE IS ACTIVE
-
-// ! add borders overall
-// ! add box-shadows overall
 
 // ! need some alert that recipe was saved successfully or sent to meals sccessfully
 

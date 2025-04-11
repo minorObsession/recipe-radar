@@ -7,6 +7,7 @@ import { deleteRecipe, addRecipeToWeeklyPlan } from "../features/searchSlice";
 import { next7Days } from "../helpers/helperFunctions";
 import { NavLink } from "react-router-dom";
 import LoadingSpinner from "./CenteredLoadingSpinner";
+import ImageOverlay from "./ImageOverlay";
 
 function MyRecipe({ recipe }) {
   const dispatch = useDispatch();
@@ -32,7 +33,10 @@ function MyRecipe({ recipe }) {
   }
 
   return (
-    <article className="items-center justify-center grid grid-rows-[60px_5fr] grid-cols-1">
+    <article
+      className="items-center justify-center grid grid-rows-[60px_5fr] grid-cols-1 rounded-xl p-3 drop-shadow-sm shadow-md shadow-current"
+      style={{ boxShadow: "1px 1px 2px" }}
+    >
       <NavLink
         to={`/app/search/${recipe.id}`}
         className="text-center font-bold text-base lg:text-lg line-clamp-2 mb-2"
@@ -45,7 +49,7 @@ function MyRecipe({ recipe }) {
         <img
           src={recipe.imageUrl}
           className={`w-[clamp(200px,100%,500px)] h-[clamp(250px,30svw,400px)]
-            object-cover text-center p-2 lg:p-5 rounded-3xl
+            object-cover text-center p-2 lg:p-5 rounded-3xl 
             transition-opacity duration-300 ${
               imageLoaded ? "opacity-80" : "opacity-0"
             }`}
@@ -53,15 +57,16 @@ function MyRecipe({ recipe }) {
           alt={recipe.title}
         />
         {/* // ! upper overlay */}
-        <div className="absolute top-4 lg:top-10 flex items-center gap-3 bg-stone-500 rounded-lg p-1.5 transition-all duration-700">
+        <ImageOverlay position="top">
           <span className="text-xs sm:text-sm  italic whitespace-nowrap">
             Add to Meals
           </span>
 
           <select
-            className={`bg-amber-900 italic  max-w-[8rem] text-sm p-1 rounded-full transition-all duration-700 `}
+            className={`bg-amber-900 italic  max-w-[8rem] text-sm p-1 rounded-full transition-all duration-200  `}
             onFocus={() => setIsSelectExpanded(true)}
             onBlur={() => setIsSelectExpanded(false)}
+            onMouseLeave={() => setIsSelectExpanded(false)}
             value={selectedWeekday}
             onChange={(e) => setSelectedWeekday(e.target.value)}
           >
@@ -90,9 +95,9 @@ function MyRecipe({ recipe }) {
           <Button onClick={handleAddToMeals} type="round">
             {isLoading ? <SmallSpinner /> : "+"}
           </Button>
-        </div>
+        </ImageOverlay>
         {/* // ! lower overlay */}
-        <div className="absolute bottom-4 lg:bottom-10 flex items-center gap-3 bg-stone-500 rounded-lg p-1.5 transition-all duration-700">
+        <ImageOverlay position="bottom">
           <span className="text-xs sm:text-sm italic">
             Remove from my recipes
           </span>
@@ -103,7 +108,7 @@ function MyRecipe({ recipe }) {
           >
             {isLoading ? <SmallSpinner /> : "-"}
           </Button>
-        </div>
+        </ImageOverlay>
       </div>
     </article>
   );
