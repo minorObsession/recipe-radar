@@ -14,8 +14,8 @@ import RecipePreview from "./components/RecipePreview";
 
 // * fix vh to svh units
 // * MOBILE: upon click on recipe autofocus brings up the phone keyboard (undesired autofous!!)]
+// * INSTEAD TO DO THAT WHEN CLICKED ON SEARCH!! NOT WHEN SEARCH PAGE IS ACTIVE
 // ! MOBILE - MEAL PLANNING CARD TOO NARROW! LOOKS SQUSHED
-// ! WEIRD HOVER THING (name hover for dropdown)
 // * no initial loading spinner for SEARCH!
 
 function App() {

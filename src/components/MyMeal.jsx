@@ -6,12 +6,14 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { removeRecipeFromWeeklyPlan } from "../features/searchSlice";
 import SmallSpinner from "./SmallSpinner";
+import LoadingSpinner from "./LoadingSpinner";
 
 function MyMeal({ recipes, i }) {
   const { weeklyRecipes } = useSelector((store) => store.search);
   const dispatch = useDispatch();
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const weekdaysPlanned = recipes.map((r) => r.weekday);
   const daysPlannedOrNot = weekdays.map((w) =>
     weekdaysPlanned.includes(w) ? true : false
@@ -62,13 +64,23 @@ function MyMeal({ recipes, i }) {
           </div>
         )}
       </div>
-      {/* // ! conditionally show img if not collapsed */}
-      {!isCollapsed && currDayRecipe?.imageUrl && (
-        <img
-          src={currDayRecipe?.imageUrl}
-          className="rounded-2xl self-center w-[clamp(50px,100%,150px)] h-[clamp(50px,100%,150px)] object-cover"
-        />
-      )}
+
+      <div className="relative flex items-center w-full h-full">
+        {currDayRecipe && !imageLoaded && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <LoadingSpinner />
+          </div>
+        )}
+        {/* // ! conditionally show img if not collapsed */}
+        {!isCollapsed && currDayRecipe?.imageUrl && (
+          <img
+            src={currDayRecipe?.imageUrl}
+            className="rounded-2xl self-center w-[clamp(50px,100%,150px)] h-[clamp(50px,100%,150px)] object-cover"
+            onLoad={() => setImageLoaded(true)}
+            alt={currDayRecipe?.title}
+          />
+        )}
+      </div>
 
       {daysPlannedOrNot[i] ? (
         <div
