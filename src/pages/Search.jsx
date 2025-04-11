@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import RecipePreview from "../components/RecipePreview";
 import SearchInput from "../components/SearchInput";
 import Sidebar from "../components/Sidebar";

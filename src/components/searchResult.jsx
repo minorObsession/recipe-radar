@@ -15,12 +15,12 @@ const SearchResult = memo(function SearchResult({ result }) {
   return (
     <li>
       <NavLink
-        className="grid grid-rows-1 grid-cols-[1fr_5fr] max-h-12 w-full sm:max-h-20 gap sm:gap-3  p-3 items-center rounded-xl border-b border-amber-800 cursor-pointer hover:text-amber-300 transition-colors duration-600  "
+        className="grid grid-rows-1 grid-cols-[1fr_5fr] max-h-12 w-full sm:max-h-20 gap-2 sm:gap-3 p-3 items-center rounded-xl border-b border-amber-800 cursor-pointer hover:text-amber-300 transition-colors duration-600  "
         onClick={handleSelect}
         to={`${result.id}`}
       >
         <img
-          className="w-10 h-10 sm:w-14 sm:h-14 rounded-full opacity-70 object-cover"
+          className="w-9 h-9 sm:w-14 sm:h-14 rounded-full opacity-70 object-cover"
           src={result.image_url}
           alt={result.title}
         />

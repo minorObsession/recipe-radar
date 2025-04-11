@@ -57,7 +57,6 @@
 html,
 :host {
   line-height: 1.5;
-
   -webkit-text-size-adjust: 100%;
   -moz-tab-size: 4;
   -o-tab-size: 4;
@@ -75,20 +74,18 @@ html,
 
 html,
 body {
-  margin: 0;
-  padding: 0;
+  height: 100svh;
   height: 100%;
+
   overflow-x: hidden;
+
   scroll-behavior: smooth;
   line-height: inherit;
 }
 
 body {
-  overflow-y: auto; /* or scroll if you want to force a scrollbar */
-}
-
-#root {
-  height: 100%;
+  scrollbar-width: none;
+  overflow-y: auto;
 }
 
 hr {

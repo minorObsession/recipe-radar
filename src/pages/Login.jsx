@@ -44,7 +44,7 @@ function Login() {
   return (
     <form
       onSubmit={handleLogin}
-      className="min-h-[30vh] max-h-[50vh] flex flex-col items-center  gap-8 lg:gap:10 text-xl"
+      className="min-h-[30svh] max-h-[50svh] flex flex-col items-center  gap-8 lg:gap:10 text-xl"
     >
       <h1 className="text-3xl lg:text-4xl mb-10">Log back into your account</h1>
       <div className="grid grid-cols-2 items-center gap-x-12  w-full gap-y-4 -translate-x-12 lg:-translate-x-20">

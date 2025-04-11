@@ -12,6 +12,12 @@ import RecipePreview from "./components/RecipePreview";
 
 // ! IDEAS - TO DO:
 
+// * fix vh to svh units
+// * MOBILE: upon click on recipe autofocus brings up the phone keyboard (undesired autofous!!)]
+// ! MOBILE - MEAL PLANNING CARD TOO NARROW! LOOKS SQUSHED
+// ! WEIRD HOVER THING (name hover for dropdown)
+// * no initial loading spinner for SEARCH!
+
 function App() {
   return (
     <BrowserRouter>

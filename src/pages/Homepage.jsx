@@ -9,7 +9,7 @@ function Homepage() {
 
   return (
     <>
-      <div className="h-screen w-full flex flex-col justify-center items-center gap-20 ">
+      <div className="h-svh w-full flex  flex-col justify-center items-center gap-20 ">
         {/* // ! headings box */}
         <div className="">
           <h1 className="text-center text-4xl lg:text-4xl mb-4 ">
