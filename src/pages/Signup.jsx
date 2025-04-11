@@ -149,7 +149,7 @@ function Signup() {
   }
 
   return (
-    <div className="flex max-w-[95vw] lg:max-w-[70vw] mx-auto justify-center p-4 lg:p-6  ">
+    <div className="flex max-w-[95svw] lg:max-w-[70svw] mx-auto justify-center p-4 lg:p-6  ">
       <form
         onSubmit={handleSubmit}
         className={`box-background w-full p-3 lg:p-5 flex flex-col gap-3 lg:g-5 items-center  `}

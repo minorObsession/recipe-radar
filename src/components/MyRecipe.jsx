@@ -39,15 +39,15 @@ function MyRecipe({ recipe }) {
       >
         {recipe?.title}
       </NavLink>
-      <div className="relative flex justify-center w-full h-full">
+      <div className="relative overflow-hidden flex justify-center w-full h-full">
         {/* // ! loading spinner if not yet loaded */}
         {!imageLoaded && <LoadingSpinner />}
         <img
           src={recipe.imageUrl}
-          className={`w-[clamp(200px,100%,500px)] h-[clamp(250px,30vw,400px)]
-            object-cover text-center p-2 lg:p-5 opacity-65 rounded-3xl
+          className={`w-[clamp(200px,100%,500px)] h-[clamp(250px,30svw,400px)]
+            object-cover text-center p-2 lg:p-5 rounded-3xl
             transition-opacity duration-300 ${
-              imageLoaded ? "opacity-100" : "opacity-0"
+              imageLoaded ? "opacity-80" : "opacity-0"
             }`}
           onLoad={() => setImageLoaded(true)}
           alt={recipe.title}

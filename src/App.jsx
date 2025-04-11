@@ -12,11 +12,12 @@ import RecipePreview from "./components/RecipePreview";
 
 // ! IDEAS - TO DO:
 
-// * fix vh to svh units
 // * MOBILE: upon click on recipe autofocus brings up the phone keyboard (undesired autofous!!)]
 // * INSTEAD TO DO THAT WHEN CLICKED ON SEARCH!! NOT WHEN SEARCH PAGE IS ACTIVE
-// ! MOBILE - MEAL PLANNING CARD TOO NARROW! LOOKS SQUSHED
-// ! MOBILE- ING tet too large
+
+// double check recipe preview when api is back
+// ! add borders overall
+// ! add box-shadows overall
 
 function App() {
   return (

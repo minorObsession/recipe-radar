@@ -38,7 +38,7 @@ function MyMeal({ recipes, i }) {
   return (
     // ! EACH DAY GRID
     <article
-      className={`relative h-fit sm:h-[300px] grid grid-cols-2 grid-rows-[3rem_fit-content_1fr_1fr] sm:grid-rows-[3rem_4rem_1fr_1fr] gap-2 bg-stone-600 p-2 rounded-xl `}
+      className={`relative h-fit sm:h-[350px] grid grid-cols-2 grid-rows-[3rem_fit-content_1fr_1fr] sm:grid-rows-[3rem_4rem_1fr_1fr] gap-2 bg-stone-600 p-2 rounded-xl `}
     >
       {/* // ! DAY OF THE WEEK + CIONS  */}
       <div className="col-span-2 flex items-center md:gap-5 justify-between">
@@ -71,17 +71,15 @@ function MyMeal({ recipes, i }) {
         {currDayRecipe?.title}
       </NavLink>
       {/* // ! IMAGE BOX */}
-      <div className=" col-span-2 h-[150px] w-full relative flex items-center justify-center">
-        {currDayRecipe && !imageLoaded && (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <LoadingSpinner />
-          </div>
-        )}
+      <div className=" col-span-2 h-[150px] w-full relative flex items-center justify-center overflow-hidden">
+        {currDayRecipe && !imageLoaded && <LoadingSpinner />}
         {/* // ! conditionally show img if not collapsed */}
         {!isCollapsed && currDayRecipe?.imageUrl && (
           <img
             src={currDayRecipe?.imageUrl}
-            className="rounded-2xl  self-center w-[clamp(200px,100%,300px)] h-[clamp(100px,100%,150px)] object-cover"
+            className={`rounded-2xl self-center w-[clamp(200px,100%,300px)] h-[clamp(100px,100%,150px)] object-cover transition-opacity duration-300 ${
+              imageLoaded ? "opacity-80" : "opacity-0"
+            }`}
             onLoad={() => setImageLoaded(true)}
             alt={currDayRecipe?.title}
           />

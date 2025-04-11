@@ -74,7 +74,7 @@ html,
 
 html,
 body {
-  height: 100svh;
+  height: 100ssvh;
   height: 100%;
 
   overflow-x: hidden;
@@ -744,7 +744,7 @@ video {
 }
 
 .h-\[90vh\] {
-  height: 90vh;
+  height: 90svh;
 }
 
 .h-\[full\] {
@@ -768,15 +768,15 @@ video {
 }
 
 .max-h-\[50vh\] {
-  max-height: 50vh;
+  max-height: 50svh;
 }
 
 .max-h-\[80vh\] {
-  max-height: 80vh;
+  max-height: 80svh;
 }
 
 .max-h-\[90vh\] {
-  max-height: 90vh;
+  max-height: 90svh;
 }
 
 .max-h-full {
@@ -784,11 +784,11 @@ video {
 }
 
 .min-h-\[30vh\] {
-  min-height: 30vh;
+  min-height: 30svh;
 }
 
 .min-h-\[80vh\] {
-  min-height: 80vh;
+  min-height: 80svh;
 }
 
 .w-1\/2 {
@@ -816,7 +816,7 @@ video {
 }
 
 .w-\[100vw\] {
-  width: 100vw;
+  width: 100svw;
 }
 
 .w-\[200px\] {
@@ -832,7 +832,7 @@ video {
 }
 
 .w-\[90vw\] {
-  width: 90vw;
+  width: 90svw;
 }
 
 .w-full {
@@ -1543,11 +1543,11 @@ body {
   }
 
   .sm\:w-\[30vw\] {
-    width: 30vw;
+    width: 30svw;
   }
 
   .sm\:w-\[90vw\] {
-    width: 90vw;
+    width: 90svw;
   }
 
   .sm\:grid-cols-2 {
@@ -1602,7 +1602,7 @@ body {
   }
 
   .md\:max-h-\[90vh\] {
-    max-height: 90vh;
+    max-height: 90svh;
   }
 
   .md\:w-full {
@@ -1610,7 +1610,7 @@ body {
   }
 
   .md\:max-w-\[90vw\] {
-    max-width: 90vw;
+    max-width: 90svw;
   }
 
   .md\:gap-5 {
@@ -1691,11 +1691,11 @@ body {
   }
 
   .lg\:max-h-\[85vh\] {
-    max-height: 85vh;
+    max-height: 85svh;
   }
 
   .lg\:max-h-\[90vh\] {
-    max-height: 90vh;
+    max-height: 90svh;
   }
 
   .lg\:min-h-\[400px\] {
@@ -1719,7 +1719,7 @@ body {
   }
 
   .lg\:w-\[20vw\] {
-    width: 20vw;
+    width: 20svw;
   }
 
   .lg\:w-\[400px\] {
@@ -1731,15 +1731,15 @@ body {
   }
 
   .lg\:w-\[65vw\] {
-    width: 65vw;
+    width: 65svw;
   }
 
   .lg\:w-\[75vw\] {
-    width: 75vw;
+    width: 75svw;
   }
 
   .lg\:w-\[90vw\] {
-    width: 90vw;
+    width: 90svw;
   }
 
   .lg\:w-full {

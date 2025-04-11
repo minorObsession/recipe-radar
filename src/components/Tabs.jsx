@@ -8,7 +8,7 @@ import SavedRecipesDropdown from "./SavedRecipesDropdown";
 
 function Tabs() {
   const { currentAccount, savedRecipes } = useSelector((store) => store.search);
-  const [showSavedRecipes, setShowSavedRecipes] = useState(false); // revert to false
+  const [showSavedRecipes, setShowSavedRecipes] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -45,6 +45,7 @@ function Tabs() {
         <SidebarButton>Plan Meals</SidebarButton>
       </NavLink>
 
+      {/* // ! hover dropdown stuff */}
       <div
         onMouseEnter={() => {
           setShowSavedRecipes(true);
