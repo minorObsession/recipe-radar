@@ -8,7 +8,7 @@ import SavedRecipesDropdown from "./SavedRecipesDropdown";
 
 function Tabs() {
   const { currentAccount, savedRecipes } = useSelector((store) => store.search);
-  const [showSavedRecipes, setShowSavedRecipes] = useState(false); // start with false to hide initially
+  const [showSavedRecipes, setShowSavedRecipes] = useState(false); // revert to false
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -21,16 +21,19 @@ function Tabs() {
   }
 
   function refreshPage() {
+    // if (!searchResults) return;
     setTimeout(() => {
       setTimeout(() => {
         dispatch(resetSearch());
         navigate(`/app/search`);
       }, 1000);
+
+      // dispatch(stopSearching());
     }, 500);
   }
 
   return (
-    <nav className="gap-2 w-full col-span-2 flex justify-between items-center p-2 mb-6 border-b-2 border-amber-300 border-dotted md:tracking-wider sm:font-semibold text-xs sm:text-sm md:text-lg lg:text-xl md:whitespace-nowrap">
+    <nav className=" gap-2 w-full col-span-2 flex justify-between items-center p-2 mb-6 border-b-2 border-amber-300 border-dotted md:tracking-wider sm:font-semibold text-xs sm:text-sm md:text-lg lg:text-xl md:whitespace-nowrap">
       <NavLink to="search" onClick={refreshPage}>
         <SidebarButton>Search</SidebarButton>
       </NavLink>
@@ -43,13 +46,20 @@ function Tabs() {
       </NavLink>
 
       <div
-        onMouseEnter={() => setShowSavedRecipes(true)}
-        onMouseLeave={() => setTimeout(() => setShowSavedRecipes(false), 1000)}
+        onMouseEnter={() => {
+          setShowSavedRecipes(true);
+        }}
+        onMouseLeave={() =>
+          setTimeout(() => {
+            setShowSavedRecipes(false);
+          }, 500)
+        }
         className="relative"
       >
-        <SidebarButton additionalClassNames="text-amber-500">
+        <SidebarButton additionalClassNames="text-amber-500  ">
           {currentAccount?.name}
         </SidebarButton>
+
         <SavedRecipesDropdown
           showSavedRecipes={showSavedRecipes}
           savedRecipes={savedRecipes}

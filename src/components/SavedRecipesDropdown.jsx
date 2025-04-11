@@ -5,6 +5,8 @@ function SavedRecipesDropdown({
   handleSelectRecipe,
   showSavedRecipes,
 }) {
+  if (!savedRecipes.length) return null;
+
   return (
     <article
       className={`absolute overflow-y-scroll w-[clamp(300px,80svw,1200px)] top-5 right-0 md:top-5 md:right-0 flex flex-col z-50 bg-stone-700/85 p-5 rounded-xl transition-opacity duration-500 ease-in-out ${
