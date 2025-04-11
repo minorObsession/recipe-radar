@@ -14,12 +14,12 @@ function Tabs() {
   const dispatch = useDispatch();
 
   function handleSelectRecipe(e) {
+    e.stopPropagation();
     const recipeName = e.target.textContent;
     const recipe = savedRecipes.find((r) => r.title === recipeName);
 
-    navigate(`/app/search/${recipe.id}`);
-    console.log("about to close...");
     setShowSavedRecipes(false);
+    navigate(`/app/search/${recipe.id}`);
   }
 
   function refreshPage() {
@@ -40,7 +40,6 @@ function Tabs() {
     const navLinks = document.querySelectorAll("nav a");
 
     navLinks.forEach((link) => {
-      console.log(link.getAttribute("href"));
       if (link.getAttribute("href").includes(currentPath)) {
         link.classList.add("active-tab");
       } else {
@@ -64,18 +63,9 @@ function Tabs() {
 
       {/* // ! hover dropdown stuff */}
       <div
-        onClick={() => {
-          setShowSavedRecipes(true);
-          setShowSavedRecipes(false);
-        }}
-        onMouseEnter={() => {
-          setShowSavedRecipes(true);
-        }}
-        onMouseLeave={() =>
-          setTimeout(() => {
-            setShowSavedRecipes(false);
-          }, 500)
-        }
+        onClick={() => setShowSavedRecipes((prev) => !prev)}
+        onMouseEnter={() => setShowSavedRecipes(true)}
+        onMouseLeave={() => setTimeout(() => setShowSavedRecipes(false), 500)}
         className="relative"
       >
         <SidebarButton additionalClassNames="text-amber-500  ">

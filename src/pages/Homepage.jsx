@@ -22,7 +22,7 @@ function Homepage() {
         {/* // ! actions box */}
         <div className="flex text-xl lg:text-2xl flex-col gap-4 lg:gap-5 items-center">
           <h2 className=" ">Start planning like a pro</h2>
-          <Button onClick={() => navigate("signup")}>GET STARTED</Button>
+          <Button onClick={() => navigate("signup")}>SIGN UP</Button>
           <h1 className=" ">Already a member?</h1>
           <Button onClick={() => navigate("login")}>LOGIN</Button>
 
