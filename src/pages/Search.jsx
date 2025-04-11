@@ -1,14 +1,15 @@
 import { memo, useCallback, useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+
+import { useDispatch, useSelector } from "react-redux";
 import RecipePreview from "../components/RecipePreview";
 import SearchInput from "../components/SearchInput";
 import Sidebar from "../components/Sidebar";
 import { search } from "../features/searchSlice";
 import { useInputChangeDebounce } from "../helpers/useInputChangeDebounce(useState+useEffect)";
 
-//
 const Search = memo(function Search() {
   const [query, setQuery] = useState("");
+  const { selectedRecipe } = useSelector((store) => store.search);
   const debouncedValue = useInputChangeDebounce(query);
   const dispatch = useDispatch();
   const searchRef = useRef();
@@ -16,7 +17,6 @@ const Search = memo(function Search() {
   const handleSearch = useCallback(
     function handleSearch(query) {
       if (!query || query.length < 3) return;
-
       dispatch(search(query));
     },
     [dispatch]
@@ -24,9 +24,14 @@ const Search = memo(function Search() {
 
   useEffect(() => {
     handleSearch(debouncedValue);
-    searchRef.current.focus();
+    if (!selectedRecipe) {
+      searchRef.current.focus();
+    }
   }, [debouncedValue, handleSearch]);
 
+  // Explanation: Removing selectedRecipe from the dependency array
+  // prevents the effect from re-running when a recipe is selected.
+  // This allows the recipe to remain selected when clicked.
   return (
     // ! whole grid
     <article

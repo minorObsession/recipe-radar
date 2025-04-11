@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { resetSearch } from "../features/searchSlice";
 import SavedRecipesDropdown from "./SavedRecipesDropdown";
+import { useEffect } from "react";
 
 function Tabs() {
   const { currentAccount, savedRecipes } = useSelector((store) => store.search);
@@ -17,20 +18,36 @@ function Tabs() {
     const recipe = savedRecipes.find((r) => r.title === recipeName);
 
     navigate(`/app/search/${recipe.id}`);
+    console.log("about to close...");
     setShowSavedRecipes(false);
   }
 
   function refreshPage() {
     // if (!searchResults) return;
     setTimeout(() => {
-      setTimeout(() => {
-        dispatch(resetSearch());
-        navigate(`/app/search`);
-      }, 1000);
+      dispatch(resetSearch());
+      navigate(`/app/search`);
 
       // dispatch(stopSearching());
     }, 500);
   }
+
+  useEffect(() => {
+    const currentPath = window.location.pathname
+      .replaceAll("/", "")
+      .replace("app", "");
+
+    const navLinks = document.querySelectorAll("nav a");
+
+    navLinks.forEach((link) => {
+      console.log(link.getAttribute("href"));
+      if (link.getAttribute("href").includes(currentPath)) {
+        link.classList.add("active-tab");
+      } else {
+        link.classList.remove("active-tab");
+      }
+    });
+  }, [location.pathname]);
 
   return (
     <nav className=" gap-2 w-full col-span-2 flex justify-between items-center p-2 mb-6 border-b-2 border-amber-300 border-dotted md:tracking-wider sm:font-semibold text-xs sm:text-sm md:text-lg lg:text-xl md:whitespace-nowrap">
@@ -47,6 +64,10 @@ function Tabs() {
 
       {/* // ! hover dropdown stuff */}
       <div
+        onClick={() => {
+          setShowSavedRecipes(true);
+          setShowSavedRecipes(false);
+        }}
         onMouseEnter={() => {
           setShowSavedRecipes(true);
         }}

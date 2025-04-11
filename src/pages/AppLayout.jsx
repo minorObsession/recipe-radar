@@ -8,7 +8,7 @@ function AppLayout() {
       {/* // ! FLEX CONTAINING THE TABS AND WHOLE PREVIEW */}
       <div className="flex justify-center">
         <div
-          className={`w-[90svw]  h-[90svh] lg:max-h-[85svh] bg-transparent grid sm:grid-cols-[5fr_1fr] grid-rows-[5rem_5fr] `}
+          className={`w-[90svw] h-[90svh] lg:max-h-[85svh] bg-transparent grid sm:grid-cols-[5fr_1fr] grid-rows-[5rem_5fr] `}
         >
           <Tabs />
           {/* <Sidebar /> */}

@@ -105,7 +105,13 @@ a {
 
 a:hover,
 a:active {
+  background-color: rgba(120 53 15);
+}
+
+.active-tab {
   background-color: rgb(120 53 15);
+  scale: 1.05;
+  padding: 0.45rem 0.6rem;
 }
 
 /*

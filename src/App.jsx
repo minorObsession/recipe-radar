@@ -15,9 +15,10 @@ import RecipePreview from "./components/RecipePreview";
 // * MOBILE: upon click on recipe autofocus brings up the phone keyboard (undesired autofous!!)]
 // * INSTEAD TO DO THAT WHEN CLICKED ON SEARCH!! NOT WHEN SEARCH PAGE IS ACTIVE
 
-// double check recipe preview when api is back
 // ! add borders overall
 // ! add box-shadows overall
+
+// ! need some alert that recipe was saved successfully or sent to meals sccessfully
 
 function App() {
   return (
