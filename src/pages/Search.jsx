@@ -14,22 +14,26 @@ const Search = memo(function Search() {
   const dispatch = useDispatch();
   const searchRef = useRef();
   const previousQuery = useRef(query);
-  console.log(previousQuery.current);
 
   const handleSearch = useCallback(
     function handleSearch(query) {
       if (!query || query.length < 3) return;
       dispatch(search(query));
+
+      previousQuery.current = query;
+      setQuery("");
     },
     [dispatch]
   );
 
   useEffect(() => {
-    if (selectedRecipe && query === previousQuery.current) return;
-    handleSearch(debouncedValue);
+    if (selectedRecipe && query === previousQuery.current && query == "")
+      return;
+    else {
+      searchRef.current.focus();
+    }
 
-    searchRef.current.focus();
-    // setQuery("");
+    handleSearch(debouncedValue);
   }, [debouncedValue, handleSearch, selectedRecipe, query]); // maybe remove selRecipe from dep array
   // Explanation: Removing selectedRecipe from the dependency array
   // prevents the effect from re-running when a recipe is selected.
